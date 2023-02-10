@@ -11,4 +11,7 @@
     <item
         android:id="@+id/packingPage"
         android:title="Packing" />
+    <item
+        android:id="@+id/restaurant"
+        android:title="Restaurants List" />
 </menu>

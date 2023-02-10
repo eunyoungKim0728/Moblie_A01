@@ -1,16 +1,15 @@
 package com.example.a01;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
 
 import com.example.a01.databinding.ActivityMainBinding;
 
@@ -53,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.packingPage:
                 intent=new Intent(this,Packing.class);
+                startActivity(intent);
+                result = true;
+                break;
+            case R.id.restaurant:
+                intent=new Intent(this,RestaurantList.class);
                 startActivity(intent);
                 result = true;
                 break;

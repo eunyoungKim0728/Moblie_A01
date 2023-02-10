@@ -10,15 +10,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.a01.databinding.ActivityMainBinding;
+import com.example.a01.databinding.PackingBinding;
 
 public class Packing extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding
-                = DataBindingUtil.setContentView(this, R.layout.packing);
+
+        PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
     }
 
 
@@ -48,6 +48,11 @@ public class Packing extends AppCompatActivity {
                 break;
             case R.id.packingPage:
                 intent=new Intent(this,Packing.class);
+                startActivity(intent);
+                result = true;
+                break;
+            case R.id.restaurant:
+                intent=new Intent(this,RestaurantList.class);
                 startActivity(intent);
                 result = true;
                 break;

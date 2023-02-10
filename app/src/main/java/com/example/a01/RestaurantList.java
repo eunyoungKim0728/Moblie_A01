@@ -9,17 +9,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
-import com.example.a01.databinding.ItineraryBinding;
 
-public class Itinerary extends AppCompatActivity {
+import com.example.a01.databinding.RestaurantListBinding;
+
+
+public class RestaurantList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
+        RestaurantListBinding binding = DataBindingUtil.setContentView(this,R.layout.restaurant_list);
 
+        WebView webView = binding.restaurant;
+
+
+
+        webView.loadUrl("https://www.tripadvisor.ca/Restaurants-g155019-Toronto_Ontario.html");
     }
 
     @SuppressLint("RestrictedApi")
