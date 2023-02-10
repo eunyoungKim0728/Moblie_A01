@@ -1,6 +1,5 @@
 package com.example.a01;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
@@ -10,22 +9,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.a01.databinding.ActivityMainBinding;
 
-
-public class MainActivity extends AppCompatActivity {
+public class Packing extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ActivityMainBinding binding
-                = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
-
+                = DataBindingUtil.setContentView(this, R.layout.packing);
     }
+
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -42,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = null;
         switch(item.getItemId()) {
             case R.id.citiesPage:
-               intent=new Intent(this,MainActivity.class);
+                intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
                 result = true;
                 break;
