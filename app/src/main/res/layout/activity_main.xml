@@ -11,10 +11,11 @@
         <Button
             android:id="@+id/button_toronto"
             android:layout_width="400dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#00BCD4"
             android:text="@string/city_toronto"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,28 +25,28 @@
         <Button
             android:id="@+id/button_quebec"
             android:layout_width="400dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#03A9F4"
             android:text="@string/city_quebec"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_toronto" />
 
         <Button
             android:id="@+id/button_vancouver"
             android:layout_width="400dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#2196F3"
             android:text="@string/city_vancouver"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_quebec" />
 

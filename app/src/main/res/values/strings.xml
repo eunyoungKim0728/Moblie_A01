@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">A01</string>
+    <string name="app_name">Trip Planner</string>
     <string name="city_toronto">Toronto</string>
     <string name="city_quebec">Quebec</string>
     <string name="city_vancouver">Vancouver</string>
