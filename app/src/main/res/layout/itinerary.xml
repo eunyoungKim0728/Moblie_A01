@@ -12,14 +12,14 @@
         tools:context=".Itinerary">
 
 
-        <Spinner
+        <TextView
+            android:id="@+id/dayText"
             style="@style/dayTextView"
-            android:id="@+id/daySpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Day 1" />
 
         <ImageView
             android:id="@+id/cntowerImg"
@@ -37,5 +37,31 @@
             android:gravity="center"
             android:inputType="none"
             android:text="9:00 - 11: 00        CN Tower" />
+
+        <ImageView
+            android:id="@+id/aqua_img"
+            android:layout_width="333dp"
+            android:layout_height="202dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/aquarium" />
+
+        <TextView
+            android:id="@+id/des_aquarium"
+            style="@style/itineraryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="none"
+            android:text="11:30 - 1:30        Ripley's Aquarium" />
+
+
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="50dp"
+            android:text="Packing List" />
+
     </LinearLayout>
 </layout>

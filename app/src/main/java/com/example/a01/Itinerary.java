@@ -10,10 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.Button;
+
+
 
 import com.example.a01.databinding.ItineraryBinding;
 
@@ -26,32 +25,11 @@ public class Itinerary extends AppCompatActivity {
         //databinding
         ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
 
-        Spinner mySpinner = binding.daySpinner;
-        ImageView imageView = binding.cntowerImg;
-
-        //spinner
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this, R.array.day_spinner,
-                                                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(adapter);
-        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        Button nextBtn=binding.nextBtn;
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int positionitem = mySpinner.getSelectedItemPosition();
-
-                switch(positionitem){
-                    case 1:
-                        startActivity(new Intent(getApplicationContext(),Itinerary.class));
-                    case 2:
-                        startActivity(new Intent(getApplicationContext(),ItineraryDay2.class));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Packing.class));
             }
         });
 

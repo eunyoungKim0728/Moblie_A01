@@ -6,6 +6,7 @@
         <item name="android:textColor"> @color/dayColour</item>
     </style>
 
+
     <style name="itineraryTextView">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
