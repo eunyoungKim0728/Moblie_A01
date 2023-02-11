@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="none"
-                android:text="@string/iter2"/>
+                android:text="@string/iter2" />
 
             <ImageView
                 android:id="@+id/res1_img"
@@ -72,8 +72,32 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="none"
-                android:text="@string/iter3"/>
+                android:text="@string/iter3" />
 
+            <ImageView
+                android:id="@+id/casaloma_img"
+                android:layout_width="316dp"
+                android:layout_height="183dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casaloma" />
+
+            <TextView
+                android:id="@+id/des_casa"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter4" />
+            <TextView
+                android:id="@+id/res2"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter5" />
 
             <Button
                 android:id="@+id/nextBtn"
@@ -82,9 +106,9 @@
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="50dp"
                 android:text="@string/packing_list" />
-          </LinearLayout>
+        </LinearLayout>
 
-        </ScrollView>
+    </ScrollView>
 
 
 
