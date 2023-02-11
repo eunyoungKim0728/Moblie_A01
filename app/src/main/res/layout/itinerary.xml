@@ -6,38 +6,36 @@
 
 
     <LinearLayout
-        style="@style/dayTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".Itinerary">
 
 
-        <TextView
-            android:id="@+id/dayText"
+        <Spinner
             style="@style/dayTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/daySpinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Day1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
 
         <ImageView
             android:id="@+id/cntowerImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:src="@drawable/cntower" />
 
         <TextView
             android:id="@+id/des_cntower"
+            style="@style/itineraryTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:inputType="none"
-            android:text="CN Tower"
-            style="@style/itineraryTextView"/>
+            android:text="9:00 - 11: 00        CN Tower" />
     </LinearLayout>
 </layout>

@@ -3,4 +3,9 @@
     <string name="city_toronto">Toronto</string>
     <string name="city_quebec">Quebec</string>
     <string name="city_vancouver">Vancouver</string>
+    <string-array name="day_spinner">
+        <item>Day 1</item>
+        <item>Day 2</item>
+    </string-array>
 </resources>
+
