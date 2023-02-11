@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

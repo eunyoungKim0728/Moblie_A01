@@ -9,7 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebBackForwardList;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 
 import com.example.a01.databinding.RestaurantListBinding;
@@ -24,7 +29,29 @@ public class RestaurantList extends AppCompatActivity {
         RestaurantListBinding binding = DataBindingUtil.setContentView(this,R.layout.restaurant_list);
 
         WebView webView = binding.restaurant;
+        ProgressBar progressBar = binding.myProgressBar;
 
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView wv, String url) {
+                return false;
+            }
+        });
+
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int progress) {
+               if(progress>=100)
+               {
+                   progressBar.setVisibility(View.GONE);
+
+               }
+               else {
+                   progressBar.setVisibility(View.VISIBLE);
+               }
+            }
+        });
 
 
         webView.loadUrl("https://www.tripadvisor.ca/Restaurants-g155019-Toronto_Ontario.html");
