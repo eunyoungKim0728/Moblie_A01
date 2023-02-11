@@ -3,9 +3,14 @@
     <string name="city_toronto">Toronto</string>
     <string name="city_quebec">Quebec</string>
     <string name="city_vancouver">Vancouver</string>
+    <string name="packing_list">Packing List</string>
     <string-array name="day_spinner">
         <item>Day 1</item>
         <item>Day 2</item>
     </string-array>
+    <string name="iter1">9:00 - 11: 00        CN Tower</string>
+    <string name="iter2">11:30 - 1:30        Ripley\'s Aquarium</string>
+    <string name="iter3">2:00 - 3:30     LUNCH : PAI</string>
+
 </resources>
 

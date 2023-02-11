@@ -5,63 +5,87 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".Itinerary">
+        android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/dayText"
-            style="@style/dayTextView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:text="Day 1" />
-
-        <ImageView
-            android:id="@+id/cntowerImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/cntower" />
-
-        <TextView
-            android:id="@+id/des_cntower"
-            style="@style/itineraryTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:inputType="none"
-            android:text="9:00 - 11: 00        CN Tower" />
-
-        <ImageView
-            android:id="@+id/aqua_img"
-            android:layout_width="333dp"
-            android:layout_height="202dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/aquarium" />
-
-        <TextView
-            android:id="@+id/des_aquarium"
-            style="@style/itineraryTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:inputType="none"
-            android:text="11:30 - 1:30        Ripley's Aquarium" />
+            android:orientation="vertical"
+            tools:context=".Itinerary">
 
 
-        <Button
-            android:id="@+id/nextBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="50dp"
-            android:text="Packing List" />
+            <TextView
+                android:id="@+id/dayText"
+                style="@style/dayTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Day 1" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/cntowerImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/cntower" />
+
+            <TextView
+                android:id="@+id/des_cntower"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter1" />
+
+            <ImageView
+                android:id="@+id/aqua_img"
+                android:layout_width="333dp"
+                android:layout_height="202dp"
+                android:layout_gravity="center"
+                android:src="@drawable/aquarium" />
+
+            <TextView
+                android:id="@+id/des_aquarium"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter2"/>
+
+            <ImageView
+                android:id="@+id/res1_img"
+                android:layout_width="345dp"
+                android:layout_height="183dp"
+                android:layout_gravity="center"
+                android:src="@drawable/restaurant1" />
+
+            <TextView
+                android:id="@+id/des_res1"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter3"/>
+
+
+            <Button
+                android:id="@+id/nextBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="50dp"
+                android:text="@string/packing_list" />
+          </LinearLayout>
+
+        </ScrollView>
+
+
+
 </layout>
