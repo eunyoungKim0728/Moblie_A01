@@ -9,6 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import com.example.a01.databinding.ItineraryBinding;
 
@@ -19,6 +22,11 @@ public class Itinerary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
+
+        TextView textView = binding.dayText;
+        ImageView imageView = binding.cntowerImg;
+
+
 
     }
 
