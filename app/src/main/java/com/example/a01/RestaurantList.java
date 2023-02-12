@@ -1,3 +1,9 @@
+/*
+ * FILE            :RestaurantList.java
+ * PROGRAMMER      :Eunyoung Kim, Yujin Jeong, Hyewon Lee, Maísa Wolff Resplande
+ * FIRST VERSION   :2023-02-11
+ * DESCRIPTION      : Programs that show RestarantList and can run on that screen
+ */
 package com.example.a01;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +25,19 @@ import android.widget.ProgressBar;
 
 import com.example.a01.databinding.RestaurantListBinding;
 
-
+/*  -- Class Header Comment
+ Name    :   Packing
+ Purpose :  Class to run the RestaurantList
+ */
 public class RestaurantList extends AppCompatActivity {
 
+
+    /*  -- Method Header Comment
+   Name   :   onCreate
+   Purpose :   Function that runs when clicked
+   Inputs   :   savedInstanceState   Bundle
+   Outputs   :   NONE
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +58,14 @@ public class RestaurantList extends AppCompatActivity {
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int progress) {
-               if(progress>=100)
-               {
-                   progressBar.setVisibility(View.GONE);
+                if(progress>=100)
+                {
+                    progressBar.setVisibility(View.GONE);
 
-               }
-               else {
-                   progressBar.setVisibility(View.VISIBLE);
-               }
+                }
+                else {
+                    progressBar.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -57,6 +73,13 @@ public class RestaurantList extends AppCompatActivity {
         webView.loadUrl("https://www.tripadvisor.ca/Restaurants-g155019-Toronto_Ontario.html");
     }
 
+
+    /*  -- Method Header Comment
+   Name   :   onCreateOptionsMenu
+   Purpose :   Method that runs when a menu is clicked
+   Inputs   :   menu   Menu
+   Outputs   :   NONE
+   */
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,27 +89,39 @@ public class RestaurantList extends AppCompatActivity {
         return true;
     }
 
+
+
+    /*  -- Method Header Comment
+   Name   :   onOptionsItemSelected
+   Purpose :   Method for displaying a list
+   Inputs   :   item   MenuItem
+   Outputs   :   NONE
+    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
             case R.id.citiesPage:
+                //Go to the city page
                 intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.ItineraryPage:
+                //Go to the itinerary page
                 intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.packingPage:
+                //Go to the packing page
                 intent=new Intent(this,Packing.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.restaurant:
+                //Go to the restaurant page
                 intent=new Intent(this,RestaurantList.class);
                 startActivity(intent);
                 result = true;

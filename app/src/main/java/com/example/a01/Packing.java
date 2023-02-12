@@ -1,9 +1,3 @@
-/*
- * FILE				:Itinerary.java
- * PROGRAMMER		:Eunyoung Kim, Yujin Jeong, Hyewon Lee, Maísa Wolff Resplande
- * FIRST VERSION	:2023-02-11
- * DESCRIPTION		: Programs that show Packing and can run on that screen
- */
 package com.example.a01;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,13 +16,6 @@ import com.example.a01.databinding.PackingBinding;
 
 public class Packing extends AppCompatActivity{
 
-
-    /*  -- Method Header Comment
-	Name	:	onCreate
-	Purpose :	Function that runs when clicked
-	Inputs	:	savedInstanceState	Bundle
-	Outputs	:	NONE
-    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +31,6 @@ public class Packing extends AppCompatActivity{
     }
 
 
-    /*  -- Method Header Comment
-	Name	:	onCreateOptionsMenu
-	Purpose :	Method that runs when a menu is clicked
-	Inputs	:	menu	Menu
-	Outputs	:	NONE
-    */
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,14 +40,6 @@ public class Packing extends AppCompatActivity{
         return true;
     }
 
-
-
-    /*  -- Method Header Comment
-	Name	:	onOptionsItemSelected
-	Purpose :	Method for displaying a list
-	Inputs	:	item	MenuItem
-	Outputs	:	NONE
-    */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean result =false;
