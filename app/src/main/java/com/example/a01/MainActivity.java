@@ -44,6 +44,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button quebecBtn = binding.buttonQuebec;
+        quebecBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NoItinerary.class));
+            }
+        });
+
+        Button vancouverBtn = binding.buttonVancouver;
+        vancouverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NoItinerary.class));
+            }
+        });
+
     }
 
 
