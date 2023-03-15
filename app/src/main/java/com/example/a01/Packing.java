@@ -5,12 +5,19 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.a01.databinding.PackingBinding;
 
@@ -36,6 +43,45 @@ public class Packing extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(),Itinerary.class));
             }
         });
+
+        EditText nameEdit = binding.nameEdit;
+        Button submitBtn = binding.submitBtn;
+        TextView nameTextView = binding.nameTextView;
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nameTextView.setText(nameEdit.getText());
+                nameEdit.setText("");
+            }
+        });
+
+        nameEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent event) {
+                if (i == EditorInfo.IME_ACTION_DONE || i == EditorInfo.IME_ACTION_UNSPECIFIED) {
+                    InputMethodManager imm = (InputMethodManager)textView.getContext()
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+                }
+                return true;
+            }
+
+        });
+
+        View packingLayout = binding.PackingLayout;
+        packingLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)nameEdit.getContext()
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(nameEdit.getWindowToken(), 0);
+            }
+        });
+
+
+
+
     }
 
 

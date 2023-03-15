@@ -70,7 +70,7 @@ public class RestaurantList extends AppCompatActivity {
         });
 
 
-        webView.loadUrl("https://www.tripadvisor.ca/Restaurants-g155019-Toronto_Ontario.html");
+        webView.loadUrl("https://paitoronto.com/");
     }
 
 

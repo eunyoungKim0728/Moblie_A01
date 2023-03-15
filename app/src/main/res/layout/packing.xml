@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <RelativeLayout
+        android:id="@+id/PackingLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         tools:context=".Packing">
 
         <TextView
@@ -17,86 +21,85 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="@string/packing_list"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="28dp" />
+            android:text="@string/packing_list" />
+
+        <EditText
+            android:id="@+id/nameEdit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/packingList"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:inputType="textPersonName"
+            android:hint="Enter your name"
+            />
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/packingList"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="130dp"
+            android:layout_alignParentRight="true"
+            android:text="submit"
+            android:textSize="8dp"/>
+
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_below="@+id/packingList"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/nameEdit"
             style="@style/itineraryTextView"
-            android:text="ㆍYujin" />
+            android:text="" />
 
         <CheckBox
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameTextView"
-            android:text="Presto Card"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="136dp" />
+            android:text="Presto Card" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox1"
-            android:text="Wallet"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="184dp" />
+            android:text="Wallet" />
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox2"
-            android:text="Toiletries"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="184dp" />
+            android:text="Toiletries" />
 
-        <TextView
-            android:id="@+id/nameTextView2"
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox3"
-            android:layout_marginTop="40dp"
-            style="@style/itineraryTextView"
-            android:text="ㆍEunyoung" />
+            android:text="Powerbank" />
 
         <CheckBox
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nameTextView2"
-            android:text="Presto Card"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="136dp" />
+            android:layout_below="@+id/checkBox4"
+            android:text="Bag" />
 
         <CheckBox
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox5"
-            android:text="Wallet"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="184dp" />
-        <CheckBox
-            android:id="@+id/checkBox7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox6"
-            android:text="Toiletries"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="184dp" />
-
+            android:text="Happy mind" />
 
         <Button
             android:id="@+id/mainButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox7"
+            android:layout_below="@+id/checkBox6"
             android:layout_alignParentRight="true"
             android:layout_marginRight="55dp"
             android:text="Main Page"
@@ -105,11 +108,10 @@
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkBox7"
+            android:layout_below="@+id/checkBox6"
             android:layout_marginLeft="10dp"
             android:text="Itinerary"
             android:textSize="10sp" />
-
 
     </RelativeLayout>
 </layout>

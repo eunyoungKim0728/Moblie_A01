@@ -52,7 +52,7 @@ public class NoItinerary1 extends AppCompatActivity {
         priceSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    // show value
+                    text.setText(String.format("$%d",seekBar.getProgress()));
             }
 
             @Override
@@ -62,7 +62,7 @@ public class NoItinerary1 extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                text.setText(String.format("$%d",seekBar.getProgress()));
             }
         });
 
