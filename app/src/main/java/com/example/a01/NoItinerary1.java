@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a01.databinding.NoItineraryPageBinding;
 
@@ -47,6 +48,23 @@ public class NoItinerary1 extends AppCompatActivity {
         });
 
         TextView text = binding.textView;
+        SeekBar priceSeek = binding.priceSeek;
+        priceSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    // show value
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
 
     }

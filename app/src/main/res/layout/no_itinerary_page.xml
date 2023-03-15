@@ -44,7 +44,16 @@
 
             android:text="" />
 
+        <SeekBar
+            android:id="@+id/priceSeek"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:max="3000"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
 
+            />
 
         <Button
             android:id="@+id/submit"
@@ -53,7 +62,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginRight="60dp"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/priceSeek"
             android:layout_alignParentRight="true"
             android:text="Submit" />
 
@@ -61,7 +70,7 @@
             android:id="@+id/mainButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/priceSeek"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"

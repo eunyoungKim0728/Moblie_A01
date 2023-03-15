@@ -96,13 +96,18 @@ public class Itinerary extends AppCompatActivity {
                 startActivity(intent);
                 result = true;
                 break;
+            case R.id.Quebec:
+                intent=new Intent(this,NoItinerary1.class);
+                startActivity(intent);
+                result = true;
+                break;
             case R.id.Vancouver:
                 intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.Montreal:
-                intent=new Intent(this,NoItinerary1.class);
+            case R.id.Main:
+                intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
                 result = true;
                 break;

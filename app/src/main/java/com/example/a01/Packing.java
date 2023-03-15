@@ -58,16 +58,22 @@ public class Packing extends AppCompatActivity{
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.Vancouver:
+            case R.id.Quebec:
                 intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.Montreal:
+            case R.id.Vancouver:
                 intent=new Intent(this,Packing.class);
                 startActivity(intent);
                 result = true;
                 break;
+            case R.id.Main:
+                intent=new Intent(this,MainActivity.class);
+                startActivity(intent);
+                result = true;
+                break;
+
             default:
                 result = super.onOptionsItemSelected(item);
                 break;
