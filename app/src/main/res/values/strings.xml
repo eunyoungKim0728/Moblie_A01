@@ -13,9 +13,9 @@
     <string name="iter3">2:00 - 3:30     LUNCH : PAI</string>
     <string name="iter4">4:00 - 6:00     Casa Loma</string>
     <string name="iter5">6:30 - 8:00     DINNER: TBD </string>
-    <string name="noiter0">Sorry, We don\'\t have plan yet</string>
+    <string name="noiter0">Sorry, We don\'t have plan yet</string>
     <string name="noiter1">Here is our survey about the price for this trip.</string>
     <string name="noiter2">We would appreciate if you submit your preferred price.</string>
-    <string name="noBtn">No,I don\'\t want to submit </string>
+    <string name="noBtn">No,I don\'t want to submit </string>
 </resources>
 

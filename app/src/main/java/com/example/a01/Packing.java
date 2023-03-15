@@ -51,7 +51,7 @@ public class Packing extends AppCompatActivity{
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nameTextView.setText(nameEdit.getText());
+                nameTextView.setText("Hello! "+nameEdit.getText());
                 nameEdit.setText("");
             }
         });
