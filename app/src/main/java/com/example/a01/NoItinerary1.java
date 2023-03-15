@@ -39,13 +39,7 @@ public class NoItinerary1 extends AppCompatActivity {
             }
         });
 
-        Button submitBtn = binding.submit;
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            }
-        });
+
 
         TextView text = binding.textView;
         SeekBar priceSeek = binding.priceSeek;
@@ -63,6 +57,15 @@ public class NoItinerary1 extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 text.setText(String.format("$%d",seekBar.getProgress()));
+            }
+        });
+
+        Button submitBtn = binding.submit;
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Thank you for taking your time",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
 

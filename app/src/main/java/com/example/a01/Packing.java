@@ -105,12 +105,12 @@ public class Packing extends AppCompatActivity{
                 result = true;
                 break;
             case R.id.Quebec:
-                intent=new Intent(this,Itinerary.class);
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Vancouver:
-                intent=new Intent(this,Packing.class);
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
