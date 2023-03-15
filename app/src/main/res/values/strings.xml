@@ -12,7 +12,8 @@
     <string name="iter2">11:30 - 1:30        Ripley\'s Aquarium</string>
     <string name="iter3">2:00 - 3:30     LUNCH : PAI</string>
     <string name="iter4">4:00 - 6:00     Casa Loma</string>
-    <string name="iter5">6:30 - 8:00     DINNER: Alo </string>
-
+    <string name="iter5">6:30 - 8:00     DINNER: TBD </string>
+    <string name="noiter1">We are surveying the price for this trip.</string>
+    <string name="noiter2">We would appreciate if you submit your preferred price.</string>
 </resources>
 

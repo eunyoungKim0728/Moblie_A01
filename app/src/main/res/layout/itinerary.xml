@@ -9,12 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".Itinerary">
-
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/dayText"
@@ -23,15 +20,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:text="Day 1" />
+                android:text="Toronto Trip - Itinenary" />
 
             <ImageView
                 android:id="@+id/cntowerImg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
+                android:layout_below="@id/dayText"
                 android:src="@drawable/cntower" />
+
 
             <TextView
                 android:id="@+id/des_cntower"
@@ -40,12 +39,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="none"
+                android:layout_below="@+id/cntowerImg"
                 android:text="@string/iter1" />
 
             <ImageView
                 android:id="@+id/aqua_img"
-                android:layout_width="333dp"
+                android:layout_width="match_parent"
                 android:layout_height="202dp"
+                android:layout_below="@id/des_cntower"
                 android:layout_gravity="center"
                 android:src="@drawable/aquarium" />
 
@@ -54,15 +55,17 @@
                 style="@style/itineraryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/aqua_img"
                 android:gravity="center"
                 android:inputType="none"
                 android:text="@string/iter2" />
 
             <ImageView
                 android:id="@+id/res1_img"
-                android:layout_width="345dp"
+                android:layout_width="match_parent"
                 android:layout_height="183dp"
                 android:layout_gravity="center"
+                android:layout_below="@id/des_aquarium"
                 android:src="@drawable/restaurant1" />
 
             <TextView
@@ -70,15 +73,18 @@
                 style="@style/itineraryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/res1_img"
                 android:gravity="center"
                 android:inputType="none"
                 android:text="@string/iter3" />
 
             <ImageView
                 android:id="@+id/casaloma_img"
-                android:layout_width="316dp"
+                android:layout_width="310dp"
                 android:layout_height="183dp"
+                android:layout_marginLeft="50dp"
                 android:layout_gravity="center"
+                android:layout_below="@id/des_res1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/casaloma" />
 
@@ -87,14 +93,17 @@
                 style="@style/itineraryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/casaloma_img"
                 android:gravity="center"
                 android:inputType="none"
                 android:text="@string/iter4" />
+
             <TextView
                 android:id="@+id/res2"
                 style="@style/itineraryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/des_casa"
                 android:gravity="center"
                 android:inputType="none"
                 android:text="@string/iter5" />
@@ -103,10 +112,22 @@
                 android:id="@+id/nextBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="50dp"
+                android:layout_below="@id/res2"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
                 android:text="@string/packing_list" />
-        </LinearLayout>
+
+            <Button
+                android:id="@+id/moreInfoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="50dp"
+                android:layout_toLeftOf="@id/nextBtn"
+                android:text="Restaurants Info"
+                android:textSize="10sp" />
+        </RelativeLayout>
 
     </ScrollView>
 

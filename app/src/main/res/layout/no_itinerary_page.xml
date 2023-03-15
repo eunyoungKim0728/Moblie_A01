@@ -4,39 +4,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".Packing">
+        tools:context=".NoItinerary1">
 
-        <TextView
-            android:id="@+id/noItinenary1"
+
+    <TextView
+            android:id="@+id/noItinerary1"
             style="@style/noItineraryTextView"
-            android:layout_width="277dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:text="There is no trip plan yet.."
+            android:layout_marginTop="50dp"
+            android:text="@string/noiter1"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="28dp" />
 
         <TextView
-            android:id="@+id/noItinenary2"
-            style="@style/noItineraryTextView"
+            android:id="@+id/noItinerary2"
+            style="@style/noItineraryTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_below="@+id/noItinerary1"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
-            android:text="See you next time!" />
+            android:text="@string/noiter2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noItinerary2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+
+            android:text="" />
+
+
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Main Page" />
-    </LinearLayout>
+            android:layout_marginRight="60dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentRight="true"
+            android:text="Submit" />
+
+        <Button
+            android:id="@+id/mainButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_toLeftOf="@+id/submit"
+            android:text="No, I don't want to submit"
+            android:textSize="8sp" />
+
+
+
+    </RelativeLayout>
 </layout>

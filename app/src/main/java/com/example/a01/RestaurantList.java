@@ -102,30 +102,22 @@ public class RestaurantList extends AppCompatActivity {
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
-            case R.id.citiesPage:
-                //Go to the city page
-                intent=new Intent(this,MainActivity.class);
-                startActivity(intent);
-                result = true;
-                break;
-            case R.id.ItineraryPage:
-                //Go to the itinerary page
+            case R.id.Toronto:
                 intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.packingPage:
-                //Go to the packing page
-                intent=new Intent(this,Packing.class);
+            case R.id.Vancouver:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.restaurant:
-                //Go to the restaurant page
-                intent=new Intent(this,RestaurantList.class);
+            case R.id.Montreal:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
+
             default:
                 result = super.onOptionsItemSelected(item);
                 break;

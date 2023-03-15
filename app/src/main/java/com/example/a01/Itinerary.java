@@ -11,7 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import com.example.a01.databinding.ItineraryBinding;
@@ -33,8 +34,45 @@ public class Itinerary extends AppCompatActivity {
             }
         });
 
+        Button moreInfoBtn = binding.moreInfoBtn;
+        moreInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RestaurantList.class));
+            }
+        });
 
+        ImageView cntowerImg = binding.cntowerImg;
+        cntowerImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"CN Tower",Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        ImageView  aquaImg = binding.aquaImg;
+        aquaImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Ripley's Aquarium",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageView  res1Img = binding.res1Img;
+        res1Img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"PAI",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageView  casalomaImg = binding.casalomaImg;
+        casalomaImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Casa Loma",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -53,26 +91,22 @@ public class Itinerary extends AppCompatActivity {
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
-            case R.id.citiesPage:
-                intent=new Intent(this,MainActivity.class);
-                startActivity(intent);
-                result = true;
-                break;
-            case R.id.ItineraryPage:
+            case R.id.Toronto:
                 intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.packingPage:
-                intent=new Intent(this,Packing.class);
+            case R.id.Vancouver:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.restaurant:
-                intent=new Intent(this,RestaurantList.class);
+            case R.id.Montreal:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
+
             default:
                 result = super.onOptionsItemSelected(item);
                 break;

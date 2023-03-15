@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:layout_below="@+id/packingList"
             style="@style/itineraryTextView"
             android:text="ㆍYujin" />
 
@@ -33,6 +34,7 @@
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTextView"
             android:text="Presto Card"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="136dp" />
@@ -41,6 +43,7 @@
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
             android:text="Wallet"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="184dp" />
@@ -48,6 +51,7 @@
             android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox2"
             android:text="Toiletries"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="184dp" />
@@ -56,6 +60,7 @@
             android:id="@+id/nameTextView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox3"
             android:layout_marginTop="40dp"
             style="@style/itineraryTextView"
             android:text="ㆍEunyoung" />
@@ -64,6 +69,7 @@
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTextView2"
             android:text="Presto Card"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="136dp" />
@@ -72,6 +78,7 @@
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox5"
             android:text="Wallet"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="184dp" />
@@ -79,20 +86,30 @@
             android:id="@+id/checkBox7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox6"
             android:text="Toiletries"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="184dp" />
 
 
         <Button
+            android:id="@+id/mainButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox7"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="55dp"
+            android:text="Main Page"
+            android:textSize="10sp" />
+        <Button
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="55dp"
-            android:text="go to main page"
+            android:layout_below="@+id/checkBox7"
+            android:layout_marginLeft="10dp"
+            android:text="Itinerary"
             android:textSize="10sp" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

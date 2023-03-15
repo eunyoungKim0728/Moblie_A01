@@ -21,11 +21,19 @@ public class Packing extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
-        Button backBtn = binding.backButton;
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        Button mainBtn = binding.mainButton;
+        mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
+
+        Button itineraryBtn = binding.backButton;
+        itineraryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Itinerary.class));
             }
         });
     }
@@ -45,23 +53,18 @@ public class Packing extends AppCompatActivity{
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
-            case R.id.citiesPage:
-                intent=new Intent(this,MainActivity.class);
-                startActivity(intent);
-                result = true;
-                break;
-            case R.id.ItineraryPage:
+            case R.id.Toronto:
                 intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.packingPage:
-                intent=new Intent(this,Packing.class);
+            case R.id.Vancouver:
+                intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.restaurant:
-                intent=new Intent(this,RestaurantList.class);
+            case R.id.Montreal:
+                intent=new Intent(this,Packing.class);
                 startActivity(intent);
                 result = true;
                 break;

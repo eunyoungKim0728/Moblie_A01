@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         quebecBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), NoItinerary.class));
+                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
             }
         });
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         vancouverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), NoItinerary.class));
+                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
             }
         });
 
@@ -67,26 +67,22 @@ public class MainActivity extends AppCompatActivity {
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
-            case R.id.citiesPage:
-               intent=new Intent(this,MainActivity.class);
+            case R.id.Toronto:
+               intent=new Intent(this,Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.ItineraryPage:
-                intent=new Intent(this,Itinerary.class);
+            case R.id.Vancouver:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.packingPage:
-                intent=new Intent(this,Packing.class);
+            case R.id.Montreal:
+                intent=new Intent(this,NoItinerary1.class);
                 startActivity(intent);
                 result = true;
                 break;
-            case R.id.restaurant:
-                intent=new Intent(this,RestaurantList.class);
-                startActivity(intent);
-                result = true;
-                break;
+
             default:
                 result = super.onOptionsItemSelected(item);
                 break;
