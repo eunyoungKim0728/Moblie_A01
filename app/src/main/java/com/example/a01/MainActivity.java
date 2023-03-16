@@ -10,12 +10,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.util.Log;
+import android.widget.ListView;
 
 
 import com.example.a01.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,30 +36,33 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Button torontoBtn = binding.buttonToronto;
-        torontoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Toronto OnClick");
-                startActivity(new Intent(getApplicationContext(), Itinerary.class));
-            }
-        });
+        ListView listView = findViewById(R.id.tripList);
 
-        Button quebecBtn = binding.buttonQuebec;
-        quebecBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Quebec OnClick");
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
-            }
-        });
+        List<String> list = new ArrayList<>();
+        list.add("Toronto");
+        list.add("Quebec");
+        list.add("Vancouver");
 
-        Button vancouverBtn = binding.buttonVancouver;
-        vancouverBtn.setOnClickListener(new View.OnClickListener() {
+        ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(adpater);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Vancouver OnClick");
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Object item = adapterView.getItemAtPosition(position);
+                String data = (String) adapterView.getItemAtPosition(position);
+                if(data == "Toronto"){
+                    Intent intent = new Intent(getApplicationContext(), Itinerary.class);
+                    startActivity(intent);
+                }else if(data == "Quebec"){
+                    Intent intent = new Intent(getApplicationContext(), NoItinerary1.class);
+                    startActivity(intent);
+                }else if(data == "Vancouver"){
+                    Intent intent = new Intent(getApplicationContext(), NoItinerary1.class);
+                    startActivity(intent);
+                }
             }
         });
 
