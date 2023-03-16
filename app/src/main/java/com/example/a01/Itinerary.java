@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,21 +38,17 @@ public class Itinerary extends AppCompatActivity {
             }
         });
 
-        Button moreInfoBtn = binding.moreInfoBtn;
-        moreInfoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "OnClick RestaurantList");
-                startActivity(new Intent(getApplicationContext(),RestaurantList.class));
-            }
-        });
+
 
         ImageView cntowerImg = binding.cntowerImg;
         cntowerImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "IMAGE[CN Tower]");
-                Toast.makeText(getApplicationContext(),"CN Tower",Toast.LENGTH_SHORT).show();
+                String url = "https://www.cntower.ca/";
+                Intent intent = new Intent(getApplicationContext(), WebViewList.class);
+                intent.putExtra("url", url);
+                startActivity(intent);
             }
         });
 
@@ -60,7 +57,10 @@ public class Itinerary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "IMAGE[Aquarium]");
-                Toast.makeText(getApplicationContext(),"Ripley's Aquarium",Toast.LENGTH_SHORT).show();
+                String url = "https://www.ripleyaquariums.com/canada/";
+                Intent intent = new Intent(getApplicationContext(), WebViewList.class);
+                intent.putExtra("url", url);
+                startActivity(intent);
             }
         });
 
@@ -68,8 +68,11 @@ public class Itinerary extends AppCompatActivity {
         res1Img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String url = "https://paitoronto.com/";
                 Log.d(TAG, "IMAGE[PAI]");
-                Toast.makeText(getApplicationContext(),"PAI",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), WebViewList.class);
+                intent.putExtra("url", url);
+                startActivity(intent);
             }
         });
 
@@ -78,7 +81,10 @@ public class Itinerary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "IMAGE[Casa Loma]");
-                Toast.makeText(getApplicationContext(),"Casa Loma",Toast.LENGTH_SHORT).show();
+                String url = "https://casaloma.ca/";
+                Intent intent = new Intent(getApplicationContext(), WebViewList.class);
+                intent.putExtra("url", url);
+                startActivity(intent);
             }
         });
 

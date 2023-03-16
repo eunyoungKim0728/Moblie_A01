@@ -29,7 +29,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RestaurantList"
+            android:name=".WebViewList"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".Packing"

@@ -16,21 +16,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.util.Log;
 
-
-import com.example.a01.databinding.RestaurantListBinding;
+import com.example.a01.databinding.WebviewListBinding;
 
 /*  -- Class Header Comment
  Name    :   Packing
  Purpose :  Class to run the RestaurantList
  */
-public class RestaurantList extends AppCompatActivity {
+public class WebViewList extends AppCompatActivity {
 
     public static final String TAG= "RestaurantList";
 
@@ -45,9 +43,9 @@ public class RestaurantList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "In OnCreate");
 
-        RestaurantListBinding binding = DataBindingUtil.setContentView(this,R.layout.restaurant_list);
+        WebviewListBinding binding = DataBindingUtil.setContentView(this,R.layout.webview_list);
 
-        WebView webView = binding.restaurant;
+        WebView webView = binding.webView;
         ProgressBar progressBar = binding.myProgressBar;
 
         webView.getSettings().setJavaScriptEnabled(true);
@@ -72,8 +70,9 @@ public class RestaurantList extends AppCompatActivity {
             }
         });
 
+        String url = getIntent().getStringExtra("url");
+        webView.loadUrl(url);
 
-        webView.loadUrl("https://paitoronto.com/");
     }
 
 
