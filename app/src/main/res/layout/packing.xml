@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox6"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="55dp"
+            android:layout_marginRight="30dp"
             android:text="Main Page"
             android:textSize="10sp" />
         <Button
@@ -109,9 +109,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox6"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="30dp"
             android:text="Itinerary"
             android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/listButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="158dp"
+            android:layout_below="@+id/checkBox6"
+            android:text="Submit"
+            android:textSize="10sp" />
+        <!--android:layout_below= "@+id/listButton" -->
+
 
     </RelativeLayout>
 </layout>

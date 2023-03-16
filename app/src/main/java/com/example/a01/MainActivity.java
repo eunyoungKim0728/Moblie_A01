@@ -35,38 +35,32 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
-        ListView listView = findViewById(R.id.tripList);
-
-        List<String> list = new ArrayList<>();
-        list.add("Toronto");
-        list.add("Quebec");
-        list.add("Vancouver");
-
-        ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adpater);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        Button torontoBtn = binding.buttonToronto;
+        torontoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Object item = adapterView.getItemAtPosition(position);
-                String data = (String) adapterView.getItemAtPosition(position);
-                if(data == "Toronto"){
-                    Intent intent = new Intent(getApplicationContext(), Itinerary.class);
-                    startActivity(intent);
-                }else if(data == "Quebec"){
-                    Intent intent = new Intent(getApplicationContext(), NoItinerary1.class);
-                    startActivity(intent);
-                }else if(data == "Vancouver"){
-                    Intent intent = new Intent(getApplicationContext(), NoItinerary1.class);
-                    startActivity(intent);
-                }
+            public void onClick(View v) {
+                Log.d(TAG, "Toronto OnClick");
+                startActivity(new Intent(getApplicationContext(), Itinerary.class));
             }
         });
-
+        Button quebecBtn = binding.buttonQuebec;
+        quebecBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Quebec OnClick");
+                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+            }
+        });
+        Button vancouverBtn = binding.buttonVancouver;
+        vancouverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Vancouver OnClick");
+                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+            }
+        });
     }
+
 
 
 
