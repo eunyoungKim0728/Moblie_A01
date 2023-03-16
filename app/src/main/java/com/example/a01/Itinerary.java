@@ -13,16 +13,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.util.Log;
 
 
 import com.example.a01.databinding.ItineraryBinding;
 
 public class Itinerary extends AppCompatActivity {
+    public static final String TAG = "Itinerary";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d(TAG, "OnCreate");
         //databinding
         ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
 
@@ -30,6 +32,7 @@ public class Itinerary extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "OnClick Packing");
                 startActivity(new Intent(getApplicationContext(),Packing.class));
             }
         });
@@ -38,6 +41,7 @@ public class Itinerary extends AppCompatActivity {
         moreInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "OnClick RestaurantList");
                 startActivity(new Intent(getApplicationContext(),RestaurantList.class));
             }
         });
@@ -46,6 +50,7 @@ public class Itinerary extends AppCompatActivity {
         cntowerImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "IMAGE[CN Tower]");
                 Toast.makeText(getApplicationContext(),"CN Tower",Toast.LENGTH_SHORT).show();
             }
         });
@@ -54,6 +59,7 @@ public class Itinerary extends AppCompatActivity {
         aquaImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "IMAGE[Aquarium]");
                 Toast.makeText(getApplicationContext(),"Ripley's Aquarium",Toast.LENGTH_SHORT).show();
             }
         });
@@ -62,6 +68,7 @@ public class Itinerary extends AppCompatActivity {
         res1Img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "IMAGE[PAI]");
                 Toast.makeText(getApplicationContext(),"PAI",Toast.LENGTH_SHORT).show();
             }
         });
@@ -70,6 +77,7 @@ public class Itinerary extends AppCompatActivity {
         casalomaImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "IMAGE[Casa Loma]");
                 Toast.makeText(getApplicationContext(),"Casa Loma",Toast.LENGTH_SHORT).show();
             }
         });
@@ -80,6 +88,7 @@ public class Itinerary extends AppCompatActivity {
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "In OnCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_1,menu);
         MenuBuilder m = (MenuBuilder)menu;
         m.setOptionalIconsVisible(true);
@@ -88,6 +97,7 @@ public class Itinerary extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "In OnOptionsItemSelected");
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {

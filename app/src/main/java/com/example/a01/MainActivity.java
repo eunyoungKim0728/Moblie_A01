@@ -11,16 +11,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.util.Log;
 
 
 import com.example.a01.databinding.ActivityMainBinding;
+import com.google.android.material.tabs.TabLayout;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG= "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "OnCreate");
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         torontoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Toronto OnClick");
                 startActivity(new Intent(getApplicationContext(), Itinerary.class));
             }
         });
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         quebecBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Quebec OnClick");
                 startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
             }
         });
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         vancouverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Vancouver OnClick");
                 startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
             }
         });
@@ -56,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "OnCreate");
         getMenuInflater().inflate(R.menu.menu_1,menu);
         MenuBuilder m = (MenuBuilder)menu;
         m.setOptionalIconsVisible(true);
@@ -64,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "In ItemSelected");
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {

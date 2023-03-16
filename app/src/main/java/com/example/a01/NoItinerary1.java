@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.example.a01.databinding.NoItineraryPageBinding;
 
@@ -25,8 +26,11 @@ import com.example.a01.databinding.NoItineraryPageBinding;
 // PURPOSE: this class has a databinding button that allows user to go back to the main page
 public class NoItinerary1 extends AppCompatActivity {
 
+    public static final String TAG= "Noltinerary1";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "In OnCreate");
         super.onCreate(savedInstanceState);
         NoItineraryPageBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.no_itinerary_page);
@@ -35,6 +39,7 @@ public class NoItinerary1 extends AppCompatActivity {
         mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick Listener");
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
@@ -46,7 +51,8 @@ public class NoItinerary1 extends AppCompatActivity {
         priceSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    text.setText(String.format("$%d",seekBar.getProgress()));
+                Log.d(TAG, "In OnProgressChanged");
+                text.setText(String.format("$%d",seekBar.getProgress()));
             }
 
             @Override
@@ -56,6 +62,7 @@ public class NoItinerary1 extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.d(TAG, "In OnStopTrackingToch");
                 text.setText(String.format("$%d",seekBar.getProgress()));
             }
         });
@@ -64,6 +71,7 @@ public class NoItinerary1 extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick MainActivity");
                 Toast.makeText(getApplicationContext(),"Thank you for taking your time",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }

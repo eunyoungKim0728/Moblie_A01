@@ -18,20 +18,26 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.example.a01.databinding.PackingBinding;
 
+
 public class Packing extends AppCompatActivity{
+
+    public static final String TAG= "RestaurantList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "In OnCreate");
 
         PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
         Button mainBtn = binding.mainButton;
         mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick MainActivity");
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
@@ -40,6 +46,7 @@ public class Packing extends AppCompatActivity{
         itineraryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick Itinerary");
                 startActivity(new Intent(getApplicationContext(),Itinerary.class));
             }
         });
@@ -51,6 +58,7 @@ public class Packing extends AppCompatActivity{
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick Text");
                 nameTextView.setText("Hello! "+nameEdit.getText());
                 nameEdit.setText("");
             }
@@ -59,6 +67,7 @@ public class Packing extends AppCompatActivity{
         nameEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent event) {
+                Log.d(TAG, "In OnEditorAction");
                 if (i == EditorInfo.IME_ACTION_DONE || i == EditorInfo.IME_ACTION_UNSPECIFIED) {
                     InputMethodManager imm = (InputMethodManager)textView.getContext()
                             .getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -73,6 +82,7 @@ public class Packing extends AppCompatActivity{
         packingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "In OnClick Input Name");
                 InputMethodManager imm = (InputMethodManager)nameEdit.getContext()
                         .getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(nameEdit.getWindowToken(), 0);
@@ -88,6 +98,7 @@ public class Packing extends AppCompatActivity{
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "In OnCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_1,menu);
         MenuBuilder m = (MenuBuilder)menu;
         m.setOptionalIconsVisible(true);
@@ -96,6 +107,7 @@ public class Packing extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "In OnOptionsItemSelected");
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {

@@ -21,6 +21,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.util.Log;
 
 
 import com.example.a01.databinding.RestaurantListBinding;
@@ -31,6 +32,7 @@ import com.example.a01.databinding.RestaurantListBinding;
  */
 public class RestaurantList extends AppCompatActivity {
 
+    public static final String TAG= "RestaurantList";
 
     /*  -- Method Header Comment
    Name   :   onCreate
@@ -41,6 +43,7 @@ public class RestaurantList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "In OnCreate");
 
         RestaurantListBinding binding = DataBindingUtil.setContentView(this,R.layout.restaurant_list);
 
@@ -83,6 +86,7 @@ public class RestaurantList extends AppCompatActivity {
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "In OnCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_1,menu);
         MenuBuilder m = (MenuBuilder)menu;
         m.setOptionalIconsVisible(true);
@@ -99,6 +103,7 @@ public class RestaurantList extends AppCompatActivity {
     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "In OnOptionsItemSelected");
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
