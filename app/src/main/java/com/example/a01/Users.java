@@ -4,6 +4,7 @@
 */
 package com.example.a01;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -12,16 +13,26 @@ import androidx.annotation.NonNull;
 
 @Entity(tableName="Users")
 public class Users {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     private int id;
     @NonNull
+    @ColumnInfo(name="user_id")
+    private long userId;
+
+    @NonNull
     private String name;
+    @NonNull
+    @ColumnInfo(name="user_name")
+    private long userName;
+
     //TODO ADD FOREIGN KEY
     @NonNull
     private int trip_id;
-
-    private String packing_list;
+    @NonNull
+    @ColumnInfo(name="trip_id")
+    private long tripID;
 
     public Users() {}
 
@@ -54,10 +65,5 @@ public class Users {
     public int getTripId() {
         return trip_id;
     }
-    public void setPackingList(String packing_list) {
-        this.packing_list = packing_list;
-    }
-    public String getPackingList() {
-        return packing_list;
-    }
+
 }

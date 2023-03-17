@@ -23,11 +23,11 @@ public interface UsersDAO {
     @Delete
     void delete (Users... users);
 
-    // Select all table Users
+    // Select all columns and rows from table Users
     @Query("SELECT * FROM Users")
     java.util.List<Users> getUsers();
 
     // Select the trip_id by the name of the user
-    @Query("SELECT trip_id FROM Users WHERE name=:name")
-    int getTripIDByName(String name);
+    @Query("SELECT id FROM Users WHERE name=:name")
+    int getUserIDByName(String name);
 }
