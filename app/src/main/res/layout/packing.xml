@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    FILE		: packing.xml
+    PROJECT	: Trip Planner
+    PROGRAMMER	: Hyewon Lee, Maisa Wolff Resplande, Eunyoung Kim, Yujin Jeong
+    DATE		: February 12, 2023
+    DESCRIPTION	: This xml file contains layout for packing page
+-->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

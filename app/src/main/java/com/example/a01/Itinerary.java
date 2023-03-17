@@ -91,6 +91,13 @@ public class Itinerary extends AppCompatActivity {
 
     }
 
+    /*
+     * FUNCTION 	: onCreateOptionsMenu(Menu menu)
+     * DESCRIPTION 	: Display option menu
+     * PARAMETERS	:
+     *      menu menu: menus
+     * RETURNS	: true (no error)
+     */
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
