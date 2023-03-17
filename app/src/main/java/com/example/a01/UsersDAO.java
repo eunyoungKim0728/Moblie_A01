@@ -27,7 +27,7 @@ public interface UsersDAO {
     @Query("SELECT * FROM Users")
     java.util.List<Users> getUsers();
 
-    // Select the trip_id by the name of the user
+    // Select the id by the name of the user
     @Query("SELECT id FROM Users WHERE name=:name")
     int getUserIDByName(String name);
 }

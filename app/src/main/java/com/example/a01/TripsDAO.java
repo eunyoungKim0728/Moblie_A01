@@ -34,8 +34,8 @@ public interface TripsDAO {
     java.util.List<Trips> getTripsFromUserID(long userId);
 
     // Select all from trips specifying a city ID
-    /*@Query("SELECT * FROM Trips WHERE city_id" +
+    @Query("SELECT * FROM Trips WHERE city_id" +
             " = (SELECT id FROM Cities WHERE id = :cityId) ")
-    java.util.List<Trips> getTripsFromCityID(long cityId);*/
+    java.util.List<Trips> getTripsFromCityID(long cityId);
 
 }
