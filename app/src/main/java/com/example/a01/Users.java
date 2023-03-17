@@ -29,6 +29,10 @@ public class Users {
     // Constructors
     public Users() {}
 
+    public Users(int userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
+    }
 
     // Setter and getters for the table's properties
     public void setUserId(long userId) {

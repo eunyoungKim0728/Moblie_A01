@@ -43,4 +43,7 @@ public interface TripsDAO {
             " = (SELECT user_id FROM Users WHERE user_name = :userName) ")
     java.util.List<Trips> getTripsFromUserName(String userName);
 
+    // Outer join
+    //
+
 }

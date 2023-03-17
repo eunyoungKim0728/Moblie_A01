@@ -28,6 +28,11 @@ public class Cities {
     // Constructors
     public Cities() {}
 
+    public Cities(int cityId, String cityName) {
+        this.cityId = cityId;
+        this.cityName = cityName;
+    }
+
     // Setter and getters for the table's properties
     public void setCityId(long cityId) {
         this.cityId = cityId;

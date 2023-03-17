@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -78,6 +79,56 @@ public class ResultList extends AppCompatActivity {
 
 
 
+        // getPlannerDatabaseFromRoom();
 
+        // db.getUsersDAO().insert(new Users(2001, name));
+        // db.getTripsDAO().insert(new Trips(3001, 1001, 2001, list));
+
+    }
+
+    // Instantiate the database using Room
+    private void getPlannerDatabaseFromRoom() {
+
+        PlannerDatabase database = PlannerDatabase.getInstance(this);
+        new PopulateDatabase().execute(database);
+    }
+
+    // Populate database with data from list
+    private class PopulateDatabase extends AsyncTask<PlannerDatabase, Void, PlannerDatabase> {
+
+        @Override
+        protected PlannerDatabase doInBackground(PlannerDatabase... d) {
+            PlannerDatabase db = d[0];
+            if (db != null) {
+
+                // Populate Cities table
+                java.util.List<Cities> cities = db.getCitiesDAO().getCities();
+                if (cities.size() == 0) {
+                    db.getCitiesDAO().insert(new Cities(1001, "Toronto"));
+                    db.getCitiesDAO().insert(new Cities(1002, "Quebec"));
+                    db.getCitiesDAO().insert(new Cities(1003, "Vancouver"));
+                }
+
+                // Create Users table
+                java.util.List<Users> users = db.getUsersDAO().getUsers();
+                if (users.size() == 0) {
+                    db.getUsersDAO().insert(new Users());
+                }
+
+                // Create Trips table
+                java.util.List<Trips> trips = db.getTripsDAO().getTrips();
+                if (trips.size() == 0) {
+                    db.getTripsDAO().insert(new Trips());
+                }
+            }
+
+            return db;
+        }
+
+        // TODO Check if we need to have onPostExecute
+        @Override
+        protected void onPostExecute(PlannerDatabase db) {
+
+        }
     }
 }
