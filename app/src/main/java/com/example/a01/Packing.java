@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
@@ -28,6 +26,7 @@ import com.example.a01.databinding.PackingBinding;
 public class Packing extends AppCompatActivity{
 
     public static final String TAG= "RestaurantList";
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +61,12 @@ public class Packing extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "In OnClick Text");
-                nameTextView.setText("Hello! "+nameEdit.getText());
+                name = nameEdit.getText().toString();
+                nameTextView.setText("Hello! "+name);
                 nameEdit.setText("");
+                // close the keyboard
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
         });
 
@@ -152,7 +155,6 @@ public class Packing extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Go to List");
-                String name = nameEdit.getText().toString();
                 String check1 = checkBox1.toString();
                 String check2 = checkBox2.toString();
                 String check3 = checkBox3.toString();
