@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <RelativeLayout
-        android:id="@+id/ResultListRayout"
+        android:id="@+id/resultListRayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -14,10 +14,31 @@
         android:focusableInTouchMode="true"
         tools:context=".ResultList">
 
+
+        <TextView
+            android:id="@+id/resultListMain"
+            style="@style/dayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="List" />
+
+        <TextView
+        android:id="@+id/resultNameList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_below="@+id/resultListMain"
+        android:layout_marginLeft="10dp"
+        style="@style/itineraryTextView"
+            android:height="38dp"
+        android:text="" />
+
         <ListView
-            android:id="@+id/tripList"
+            android:id="@+id/resultCheckList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/resultNameList"
 
             />
 

@@ -27,14 +27,19 @@ public class Packing extends AppCompatActivity{
 
     public static final String TAG= "RestaurantList";
     private String name;
+    private String ch1;
+    private String ch2;
+    private String ch3;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "In OnCreate");
 
-
         PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
+
         Button mainBtn = binding.mainButton;
         mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,13 +100,16 @@ public class Packing extends AppCompatActivity{
             }
         });
 
-
         CheckBox checkBox1 = binding.checkBox1;
+
         checkBox1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Checked Presto Card");
-                String check1 = checkBox1.toString();
+                if(checkBox1.isChecked()){
+                    ch1 = checkBox1.getText().toString();
+                }
+
             }
         });
 
@@ -111,7 +119,9 @@ public class Packing extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Checked Wallet");
-                String check2 = checkBox2.toString();
+                if(checkBox2.isChecked()){
+                    ch2 = checkBox2.getText().toString();
+                }
             }
         });
 
@@ -121,31 +131,9 @@ public class Packing extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Checked Toiletries");
-                String check3 = checkBox3.toString();
-            }
-        });
-        CheckBox checkBox4 = binding.checkBox4;
-        checkBox4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Checked Powerbank");
-                String check4 = checkBox4.toString();
-            }
-        });
-        CheckBox checkBox5 = binding.checkBox5;
-        checkBox5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Checked Bag");
-                String check5 = checkBox5.toString();
-            }
-        });
-        CheckBox checkBox6 = binding.checkBox6;
-        checkBox6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Checked Happymind");
-                String check6 = checkBox6.toString();
+                if(checkBox3.isChecked()){
+                    ch3 = checkBox3.getText().toString();
+                }
             }
         });
 
@@ -155,23 +143,17 @@ public class Packing extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Go to List");
-                String check1 = checkBox1.toString();
-                String check2 = checkBox2.toString();
-                String check3 = checkBox3.toString();
-                String check4 = checkBox4.toString();
-                String check5 = checkBox5.toString();
-                String check6 = checkBox6.toString();
+
                 Intent intent = new Intent(getBaseContext(), ResultList.class);
                 intent.putExtra("name", name);
-                intent.putExtra("checked1", check1);
-                intent.putExtra("checked2", check2);
-                intent.putExtra("checked3", check3);
-                intent.putExtra("checked4", check4);
-                intent.putExtra("checked5", check5);
-                intent.putExtra("checked6", check6);
+                intent.putExtra("checkBox1", ch1);
+                intent.putExtra("checkBox2", ch2);
+                intent.putExtra("checkBox3", ch3);
+
                 startActivity(intent);
             }
         });
+
 
     }
 
