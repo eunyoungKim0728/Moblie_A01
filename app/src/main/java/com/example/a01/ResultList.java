@@ -38,22 +38,38 @@ public class ResultList extends AppCompatActivity {
         String checkBox1 = intent.getStringExtra("checkBox1");
         String checkBox2 = intent.getStringExtra("checkBox2");
         String checkBox3 = intent.getStringExtra("checkBox3");
+        String checkBox4 = intent.getStringExtra("checkBox4");
+        String checkBox5 = intent.getStringExtra("checkBox5");
+        String checkBox6 = intent.getStringExtra("checkBox6");
 
 
         textView.setText(name +"'s Packing List!" );
 
         List<String> list = new ArrayList<>();
 
-
-
-        if(checkBox1.equals("Presto Card")){   //str 값이 option1 이라면
-            list.add(checkBox1);
-
-        }else if(checkBox2.equals("Wallet")){  //str 값이 option2 라면
-            list.add(checkBox2);
-
-        }else if(checkBox3.equals("Toiletries")){  //str 값이 option2 라면
-            list.add(checkBox3);
+        list.add(checkBox1);
+        if(checkBox1 == null) {
+           list.remove(checkBox1);
+        }
+        list.add(checkBox2);
+        if(checkBox2 == null) {
+            list.remove(checkBox2);
+        }
+        list.add(checkBox3);
+        if(checkBox3 == null) {
+            list.remove(checkBox3);
+        }
+        list.add(checkBox4);
+        if(checkBox4 == null) {
+            list.remove(checkBox4);
+        }
+        list.add(checkBox5);
+        if(checkBox5 == null) {
+            list.remove(checkBox5);
+        }
+        list.add(checkBox6);
+        if(checkBox6 == null) {
+            list.remove(checkBox6);
         }
 
 
