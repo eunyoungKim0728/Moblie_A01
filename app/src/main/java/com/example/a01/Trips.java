@@ -1,3 +1,7 @@
+/*  -- Class Header Comment
+   File name   :   Trips.java
+   Description :   Define the properties of table called Trips in the database.
+*/
 package com.example.a01;
 
 import androidx.annotation.NonNull;

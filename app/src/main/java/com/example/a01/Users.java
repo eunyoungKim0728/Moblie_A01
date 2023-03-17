@@ -1,5 +1,5 @@
 /*  -- Class Header Comment
-   File name   :   Users
+   File name   :   Users.java
    Description :   Define the properties of table called Users in the database.
 */
 package com.example.a01;
