@@ -30,6 +30,9 @@ public class Packing extends AppCompatActivity{
     private String ch1;
     private String ch2;
     private String ch3;
+    private String ch4;
+    private String ch5;
+    private String ch6;
 
 
 
@@ -137,6 +140,39 @@ public class Packing extends AppCompatActivity{
             }
         });
 
+        CheckBox checkBox4 = binding.checkBox4;
+        checkBox4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Checked Toiletries");
+                if(checkBox4.isChecked()){
+                    ch4 = checkBox4.getText().toString();
+                }
+            }
+        });
+
+        CheckBox checkBox5 = binding.checkBox5;
+        checkBox5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Checked Toiletries");
+                if(checkBox5.isChecked()){
+                    ch5 = checkBox5.getText().toString();
+                }
+            }
+        });
+
+        CheckBox checkBox6 = binding.checkBox6;
+        checkBox6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Checked Toiletries");
+                if(checkBox6.isChecked()){
+                    ch6 = checkBox6.getText().toString();
+                }
+            }
+        });
+
 
         Button listBtn = binding.listButton;
         listBtn.setOnClickListener(new View.OnClickListener() {
@@ -146,9 +182,13 @@ public class Packing extends AppCompatActivity{
 
                 Intent intent = new Intent(getBaseContext(), ResultList.class);
                 intent.putExtra("name", name);
+
                 intent.putExtra("checkBox1", ch1);
                 intent.putExtra("checkBox2", ch2);
                 intent.putExtra("checkBox3", ch3);
+                intent.putExtra("checkBox4", ch4);
+                intent.putExtra("checkBox5", ch5);
+                intent.putExtra("checkBox6", ch6);
 
                 startActivity(intent);
             }
