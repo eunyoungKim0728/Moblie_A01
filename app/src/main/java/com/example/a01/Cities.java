@@ -9,36 +9,36 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Define table Cities
 @Entity(tableName="Cities")
+
+// Define class for Cities
 public class Cities {
+
+    // Define properties and columns' names
     @PrimaryKey(autoGenerate = true)
-    @NonNull
-    private int id;
     @NonNull
     @ColumnInfo(name="city_id")
     private long cityId;
 
     @NonNull
-    private String name;
-    @NonNull
     @ColumnInfo(name="city_name")
-    private long cityName;
+    private String cityName;
 
-    //TODO ADD FOREIGN KEY (?)
-
+    // Constructors
     public Cities() {}
 
     // Setter and getters for the table's properties
-    public void setId(int id) {
-        this.id = id;
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
     }
-    public int getId() {
-        return id;
+    public long getCityId() {
+        return cityId;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
-    public String getName() {
-        return name;
+    public String getCityName() {
+        return cityName;
     }
 }

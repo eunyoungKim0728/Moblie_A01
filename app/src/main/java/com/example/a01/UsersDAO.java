@@ -28,6 +28,6 @@ public interface UsersDAO {
     java.util.List<Users> getUsers();
 
     // Select the id by the name of the user
-    @Query("SELECT id FROM Users WHERE name=:name")
+    @Query("SELECT user_id FROM Users WHERE user_name=:name")
     int getUserIDByName(String name);
 }
