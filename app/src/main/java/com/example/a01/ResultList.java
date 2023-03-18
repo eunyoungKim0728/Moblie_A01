@@ -7,9 +7,11 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -29,6 +31,16 @@ public class ResultList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ResultListBinding binding = DataBindingUtil.setContentView(this,R.layout.result_list);
+
+
+        Button itineraryBtn = binding.backButton;
+        itineraryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Packing.class));
+            }
+        });
+
 
         TextView textView = binding.resultNameList;
         ListView listView = binding.resultCheckList;
@@ -77,13 +89,6 @@ public class ResultList extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
 
-
-
-        // getPlannerDatabaseFromRoom();
-
-        // db.getUsersDAO().insert(new Users(2001, name));
-        // db.getTripsDAO().insert(new Trips(3001, 1001, 2001, list));
-
     }
 
     // Instantiate the database using Room
@@ -130,5 +135,6 @@ public class ResultList extends AppCompatActivity {
         protected void onPostExecute(PlannerDatabase db) {
 
         }
+
     }
 }

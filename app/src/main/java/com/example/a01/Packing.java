@@ -43,12 +43,12 @@ public class Packing extends AppCompatActivity{
 
         PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
 
-        Button mainBtn = binding.mainButton;
-        mainBtn.setOnClickListener(new View.OnClickListener() {
+        Button nextBtn = binding.nextBtn;
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Go to MainActivity");
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Log.d(TAG, "Go to ViewJSONFileActivity");
+                startActivity(new Intent(getApplicationContext(),ViewJSONFile.class));
             }
         });
 
@@ -56,13 +56,15 @@ public class Packing extends AppCompatActivity{
         itineraryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Go to Itinerary");
-                startActivity(new Intent(getApplicationContext(),Itinerary.class));
+                Log.d(TAG, "Go to MainActivity");
+                startActivity(new Intent(getApplicationContext(),Packing.class));
             }
         });
 
-        EditText nameEdit = binding.nameEdit;
+
         Button submitBtn = binding.submitBtn;
+        EditText nameEdit = binding.nameEdit;
+        Button listBtn = binding.listBtn;
         TextView nameTextView = binding.nameTextView;
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +176,7 @@ public class Packing extends AppCompatActivity{
         });
 
 
-        Button listBtn = binding.listButton;
+
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

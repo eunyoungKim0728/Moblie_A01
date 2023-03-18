@@ -24,11 +24,17 @@
             android:layout_marginTop="10dp"
             android:text="List" />
 
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Back"/>
+
         <TextView
         android:id="@+id/resultNameList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:layout_below="@+id/resultListMain"
+        android:layout_height="wrap_content" android:layout_below="@+id/resultListMain"
         android:layout_marginLeft="10dp"
         style="@style/itineraryTextView"
             android:height="38dp"
@@ -41,6 +47,7 @@
             android:layout_below="@+id/resultNameList"
 
             />
+
 
 
 

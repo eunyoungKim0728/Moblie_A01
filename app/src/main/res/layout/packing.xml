@@ -103,13 +103,13 @@
             android:text="Happy mind" />
 
         <Button
-            android:id="@+id/mainButton"
+            android:id="@+id/nextBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkBox6"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30dp"
-            android:text="Main Page"
+            android:text="Summary"
             android:textSize="10sp" />
         <Button
             android:id="@+id/backButton"
@@ -121,12 +121,12 @@
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/listButton"
+            android:id="@+id/listBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="158dp"
             android:layout_below="@+id/checkBox6"
-            android:text="Submit"
+            android:text="Print"
             android:textSize="10sp" />
         <!--android:layout_below= "@+id/listButton" -->
 
