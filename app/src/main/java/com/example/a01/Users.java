@@ -27,10 +27,10 @@ public class Users {
     private String userName;
 
     // Constructors
+    @Ignore
     public Users() {}
 
-    public Users(int userId, String userName) {
-        this.userId = userId;
+    public Users(String userName) {
         this.userName = userName;
     }
 

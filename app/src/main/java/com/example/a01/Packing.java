@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -175,22 +176,55 @@ public class Packing extends AppCompatActivity{
             }
         });
 
-
+        // Instantiate the database
+        getPlannerDatabaseFromRoom();
 
         listBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Go to List");
+                Log.d(TAG, "Add user information to database");
+
+                long cityId = 1001; // Toronto trip ID
+
+                Log.d(TAG, "Get packing list for user and concatenate in one string");
+
+                String packingList = new String();
+
+                if(checkBox1 != null) {
+                    packingList += ch1 + "\n";
+                }
+                if(checkBox2 != null) {
+                    packingList += ch2 + "\n";
+                }
+                if(checkBox3 != null) {
+                    packingList += ch3 + "\n";
+                }
+                if(checkBox4 != null) {
+                    packingList += ch4 + "\n";
+                }
+                if(checkBox5 != null) {
+                    packingList += ch5 + "\n";
+                }
+                if(checkBox6 != null) {
+                    packingList += ch6 + "\n";
+                }
+
+                PlannerDatabase db = PlannerDatabase.getInstance(getApplicationContext());
+                db.getUsersDAO().insert(new Users(name));
+
+                long userId = db.getUsersDAO().getUserIDByName(name);
+
+                db.getTripsDAO().insert(new Trips(cityId, userId, packingList));
 
                 Intent intent = new Intent(getBaseContext(), ResultList.class);
-                intent.putExtra("name", name);
+                /*intent.putExtra("name", name);
 
                 intent.putExtra("checkBox1", ch1);
                 intent.putExtra("checkBox2", ch2);
                 intent.putExtra("checkBox3", ch3);
                 intent.putExtra("checkBox4", ch4);
                 intent.putExtra("checkBox5", ch5);
-                intent.putExtra("checkBox6", ch6);
+                intent.putExtra("checkBox6", ch6);*/
 
                 startActivity(intent);
             }
@@ -247,5 +281,41 @@ public class Packing extends AppCompatActivity{
         }
 
         return result;
+    }
+
+    // Instantiate the database using Room
+    private void getPlannerDatabaseFromRoom() {
+
+        PlannerDatabase database = PlannerDatabase.getInstance(this);
+        new PopulateDatabase().execute(database);
+    }
+
+    // Populate database with initial values for cities
+    // Other tables will be populate when the user add new trips
+    private class PopulateDatabase extends AsyncTask<PlannerDatabase, Void, PlannerDatabase> {
+
+        @Override
+        protected PlannerDatabase doInBackground(PlannerDatabase... d) {
+            PlannerDatabase db = d[0];
+            if (db != null) {
+
+                // Populate Cities table
+                java.util.List<Cities> cities = db.getCitiesDAO().getCities();
+                if (cities.size() == 0) {
+                    db.getCitiesDAO().insert(new Cities(1001, "Toronto"));
+                    db.getCitiesDAO().insert(new Cities(1002, "Quebec"));
+                    db.getCitiesDAO().insert(new Cities(1003, "Vancouver"));
+                }
+            }
+
+            return db;
+        }
+
+        // TODO Check if we need to have onPostExecute
+        @Override
+        protected void onPostExecute(PlannerDatabase db) {
+
+        }
+
     }
 }

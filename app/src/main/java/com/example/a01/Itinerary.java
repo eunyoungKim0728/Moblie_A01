@@ -33,8 +33,8 @@ public class Itinerary extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "OnClick Packing");
-                startActivity(new Intent(getApplicationContext(),Packing.class));
+                Log.d(TAG, "OnClick Add Travellers");
+                startActivity(new Intent(getApplicationContext(),ResultList.class));
             }
         });
 

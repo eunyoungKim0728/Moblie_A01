@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 // Define table Trips and constraint foreign keys
@@ -43,13 +44,13 @@ public class Trips {
 
     // Constructors
     // TODO check about the constructors
+    @Ignore
     public Trips() {}
 
-    public Trips(int tripId, int cityId, int userId) {
-        this.id = tripId;
+    public Trips(long cityId, long userId, String packingList) {
         this.cityId = cityId;
         this.userId = userId;
-        this.packingList = "";
+        this.packingList = packingList;
     }
 
     // Setter and getters to table's properties

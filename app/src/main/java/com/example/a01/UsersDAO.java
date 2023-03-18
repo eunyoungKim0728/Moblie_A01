@@ -30,4 +30,8 @@ public interface UsersDAO {
     // Select the id by the name of the user
     @Query("SELECT user_id FROM Users WHERE user_name=:name")
     int getUserIDByName(String name);
+
+    // Select all names from User
+    @Query("SELECT user_name FROM Users")
+    java.util.List<String> getAllUsersName();
 }
