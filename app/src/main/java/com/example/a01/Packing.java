@@ -188,7 +188,7 @@ public class Packing extends AppCompatActivity{
 
                 Log.d(TAG, "Get packing list for user and concatenate in one string");
 
-                String packingList = "";
+                String packingList = new String();
 
                 if(checkBox1 != null) {
                     packingList += ch1 + "\n";

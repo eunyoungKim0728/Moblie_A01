@@ -53,57 +53,24 @@ public class ResultList extends AppCompatActivity {
             }
         });
 
-
-
         TextView textView = binding.resultNameList;
-        textView.setText("Check who's already packaged to your trip!" );
-
-
+        textView.setText("Check who's already packaged to your trip!");
 
         // getting data from database
         PlannerDatabase db = PlannerDatabase.getInstance(this);
         list = db.getUsersDAO().getAllUsersName();
 
-        // TODO Implement recycler view instead of list view
         // using recycler view
-        //setContentView(binding.getRoot());
         recyclerView = binding.travellersList;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new ListAdapter());
-
-
-        // using list view
-        /*ListView listView = binding.resultCheckList;
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);*/
-
-
-       /* Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String checkBox1 = intent.getStringExtra("checkBox1");
-        String checkBox2 = intent.getStringExtra("checkBox2");
-        String checkBox3 = intent.getStringExtra("checkBox3");
-        String checkBox4 = intent.getStringExtra("checkBox4");
-        String checkBox5 = intent.getStringExtra("checkBox5");
-        String checkBox6 = intent.getStringExtra("checkBox6");*/
-
-
-
-        //textView.setText(name +"'s Packing List!" );
-
-
-
     }
 
-    // TODO Write method for ListItemHolder
+
     private class ListItemHolder extends RecyclerView.ViewHolder {
-        //private View itemView;
         private TextView detailsTextView;
         public ListItemHolder(ListItemBinding binding) {
             super(binding.getRoot());
-            //super(view);
-            //this.itemView = view;
-            //myTextView = itemView.findViewById(R.id.my_text_view);
             detailsTextView = binding.listItem;
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,7 +98,8 @@ public class ResultList extends AppCompatActivity {
         }
     }
 
-    // TODO Write method of ListAdapter for recycler view
+
+
     private class ListAdapter extends RecyclerView.Adapter {
 
         ListItemBinding binding = null;
@@ -140,7 +108,6 @@ public class ResultList extends AppCompatActivity {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             binding = ListItemBinding.inflate(getLayoutInflater());
-//            View view = getLayoutInflater().inflate(R.layout.list_item, parent, false);
             return new ListItemHolder(binding);
         }
 
