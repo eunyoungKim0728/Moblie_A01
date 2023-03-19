@@ -1,3 +1,9 @@
+//FILE          : ResultAdminList.java
+//PROJECT       : PROG3150 - assignment 2
+//PROGRAMMER    : Yujin Jeong, Eunyoung Kim. Hyewon Lee, Maísa Wolff Resplande
+//FIRST VERSION : 2023.03.18
+//DESCRIPTION   : This file shows the result of data
+//
 package com.example.a01;
 
 import android.app.Activity;
