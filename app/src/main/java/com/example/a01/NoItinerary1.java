@@ -1,7 +1,7 @@
 //FILE          : NoItinerary1.java
-//PROJECT       : PROG3150 - assignment 1
+//PROJECT       : PROG3150 - assignment 3
 //PROGRAMMER    : Yujin Jeong, Eunyoung Kim. Hyewon Lee, Maísa Wolff Resplande
-//FIRST VERSION : 2023.02.11
+//FIRST VERSION : 2023.03.18
 //DESCRIPTION   : This file has an interface to show a message "there is no itinerary" and a button
 //                to go back to the main page
 

@@ -1,3 +1,11 @@
+//FILE          : MyFragment.java
+//PROJECT       : PROG3150 - assignment 2
+//PROGRAMMER    : Yujin Jeong, Eunyoung Kim. Hyewon Lee, Maísa Wolff Resplande
+//FIRST VERSION : 2023.03.18
+//DESCRIPTION   : This fragmet file is going to ResultAdminList
+//
+
+
 package com.example.a01;
 
 import android.app.Fragment;
