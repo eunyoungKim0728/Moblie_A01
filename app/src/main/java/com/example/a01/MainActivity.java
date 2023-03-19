@@ -1,10 +1,13 @@
 package com.example.a01;
 
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
 import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Vancouver OnClick");
                 startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+            }
+        });
+
+
+        Button adminBtn = binding.adminBtn;
+        adminBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Admin Info OnClick");
+                if (savedInstanceState == null) {
+                    Fragment myFragment = new com.example.a01.MyFragment();
+                    getFragmentManager().beginTransaction().add(android.R.id.content, myFragment).commit();
+                }
             }
         });
     }

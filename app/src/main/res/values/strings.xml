@@ -17,5 +17,6 @@
     <string name="noiter1">Here is our survey about the price for this trip.</string>
     <string name="noiter2">We would appreciate if you submit your preferred price.</string>
     <string name="noBtn">No,I don\'t want to submit </string>
+    <string name="Info_admin">Admin Info</string>
 </resources>
 
