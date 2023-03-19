@@ -43,7 +43,6 @@ public class Trips {
     private String packingList;
 
     // Constructors
-    // TODO check about the constructors
     @Ignore
     public Trips() {}
 

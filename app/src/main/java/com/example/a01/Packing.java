@@ -302,12 +302,5 @@ public class Packing extends AppCompatActivity{
 
             return db;
         }
-
-        // TODO Check if we need to have onPostExecute
-        @Override
-        protected void onPostExecute(PlannerDatabase db) {
-
-        }
-
     }
 }
