@@ -188,7 +188,7 @@ public class Packing extends AppCompatActivity{
 
                 Log.d(TAG, "Get packing list for user and concatenate in one string");
 
-                String packingList = new String();
+                String packingList = "";
 
                 if(checkBox1 != null) {
                     packingList += ch1 + "\n";
@@ -217,14 +217,6 @@ public class Packing extends AppCompatActivity{
                 db.getTripsDAO().insert(new Trips(cityId, userId, packingList));
 
                 Intent intent = new Intent(getBaseContext(), ResultList.class);
-                /*intent.putExtra("name", name);
-
-                intent.putExtra("checkBox1", ch1);
-                intent.putExtra("checkBox2", ch2);
-                intent.putExtra("checkBox3", ch3);
-                intent.putExtra("checkBox4", ch4);
-                intent.putExtra("checkBox5", ch5);
-                intent.putExtra("checkBox6", ch6);*/
 
                 startActivity(intent);
             }

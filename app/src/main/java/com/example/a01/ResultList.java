@@ -1,29 +1,24 @@
 package com.example.a01;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.database.MatrixCursor;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-
 import com.example.a01.databinding.ActivityResultListBinding;
-import com.example.a01.databinding.PackingBinding;
 import com.example.a01.databinding.ResultListBinding;
+import com.example.a01.databinding.ListItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +26,9 @@ import java.util.List;
 public class ResultList extends AppCompatActivity {
 
     private @NonNull ActivityResultListBinding binding;
+
+    RecyclerView recyclerView = null;
+    private List<String> list = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +59,23 @@ public class ResultList extends AppCompatActivity {
         textView.setText("Check who's already packaged to your trip!" );
 
 
-        // TODO Implement recycler view instead of list view
-        /*RecyclerView recyclerView = binding.resultCheckList;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
-        ListView listView = binding.resultCheckList;
+        // getting data from database
         PlannerDatabase db = PlannerDatabase.getInstance(this);
-        List<String> list = new ArrayList<>();
         list = db.getUsersDAO().getAllUsersName();
 
+        // TODO Implement recycler view instead of list view
+        // using recycler view
+        //setContentView(binding.getRoot());
+        recyclerView = binding.travellersList;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new ListAdapter());
+
+
+        // using list view
+        /*ListView listView = binding.resultCheckList;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
 
        /* Intent intent = getIntent();
@@ -92,11 +96,45 @@ public class ResultList extends AppCompatActivity {
     }
 
     // TODO Write method for ListItemHolder
+    private class ListItemHolder extends RecyclerView.ViewHolder {
+        //private View itemView;
+        private TextView detailsTextView;
+        public ListItemHolder(ListItemBinding binding) {
+            super(binding.getRoot());
+            //super(view);
+            //this.itemView = view;
+            //myTextView = itemView.findViewById(R.id.my_text_view);
+            detailsTextView = binding.listItem;
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String userName = detailsTextView.getText().toString();
+                    PlannerDatabase db = PlannerDatabase.getInstance(getApplicationContext());
+                    String packingList = db.getTripsDAO().getPackingListFromUserName(userName);
+
+                    Intent myIntent = new Intent(getApplicationContext(),
+                            ViewDetails.class);
+                    myIntent.putExtra("name",userName);
+                    myIntent.putExtra("packingList",packingList);
+                    startActivity(myIntent);
+                }
+            });
+        }
+
+        public TextView getMyTextView() {
+            return detailsTextView;
+        }
+
+        public void setMyTextView(TextView detailsTextView) {
+            this.detailsTextView = detailsTextView;
+        }
+    }
 
     // TODO Write method of ListAdapter for recycler view
-    /*private class ListAdapter extends RecyclerView.Adapter {
+    private class ListAdapter extends RecyclerView.Adapter {
 
-        ListBinding binding = null;
+        ListItemBinding binding = null;
 
         @NonNull
         @Override
@@ -108,13 +146,13 @@ public class ResultList extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            String item = myList.get(position);
+            String item = list.get(position);
             ((ListItemHolder)holder).getMyTextView().setText(item);
         }
 
         @Override
         public int getItemCount() {
-            return myList.size();
+            return list.size();
         }
-    }*/
+    }
 }

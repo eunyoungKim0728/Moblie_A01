@@ -23,4 +23,15 @@ public class ViewDetails extends AppCompatActivity {
     // TODO On create display details for traveller retrieving information for database
     // Traveller name
     // Packing list
+
+    TextView detailsTextView = null;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.view_details);
+        detailsTextView = findViewById(R.id.detailsTextView);
+        detailsTextView.setText(getIntent().getStringExtra("packingList"));
+    }
 }
