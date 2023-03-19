@@ -1,0 +1,26 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "The values into Json",
+  "main": "index.js",
+  "scripts": {
+    "test": "x",
+    "start": "json-server --watch database.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joyonghihae/Moblie_A01.git"
+  },
+  "keywords": [
+    "Moblie_A01"
+  ],
+  "author": "Eunyoung, Yujin Jeong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joyonghihae/Moblie_A01/issues"
+  },
+  "homepage": "https://github.com/Joyonghihae/Moblie_A01#readme",
+  "dependencies": {
+    "json-server": "^0.17.2"
+  }
+}
