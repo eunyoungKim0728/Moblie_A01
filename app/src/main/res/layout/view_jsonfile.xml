@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ViewJSONFile">
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="Here is Trip Summary"
+            android:textColor="#2A3FB6"
+
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/city1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/summary"
+            style="@style/jsonTextView"
+            android:text="City"/>
+
+        <TextView
+            android:id="@+id/cities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/city1"
+            style="@style/jsonTextView2"/>
+
+        <TextView
+            android:id="@+id/price1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/jsonTextView"
+            android:layout_below="@+id/cities"
+            android:text="Price"/>
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price1"
+            style="@style/jsonTextView2"/>
+
+        <TextView
+            android:id="@+id/guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price"
+            style="@style/jsonTextView"
+            android:text="Tour Guide"/>
+
+
+        <TextView
+            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guide1"
+            style="@style/jsonTextView2"/>
+
+        <TextView
+            android:id="@+id/dest1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guide"
+            style="@style/jsonTextView"
+            android:text="Tourist Destination"/>
+
+        <TextView
+            android:id="@+id/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dest1"
+            style="@style/jsonTextView2"/>
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/destination"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:text="Home"
+            android:textSize="10sp" />
+
+
+    </RelativeLayout>
+</layout>

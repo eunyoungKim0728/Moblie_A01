@@ -10,60 +10,42 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
 
-
+// Define table Users
 @Entity(tableName="Users")
+
+// Define class for Users
 public class Users {
 
+    // Define properties and columns' names
     @PrimaryKey(autoGenerate = true)
-    @NonNull
-    private int id;
     @NonNull
     @ColumnInfo(name="user_id")
     private long userId;
 
     @NonNull
-    private String name;
-    @NonNull
     @ColumnInfo(name="user_name")
-    private long userName;
+    private String userName;
 
-    //TODO ADD FOREIGN KEY
-    @NonNull
-    private int trip_id;
-    @NonNull
-    @ColumnInfo(name="trip_id")
-    private long tripID;
-
+    // Constructors
+    @Ignore
     public Users() {}
 
-    // TODO check if this part of the code can be deleted
-    /* @Ignore
-    public Users(String name) {
-        this.name = name;
+    public Users(String userName) {
+        this.userName = userName;
     }
-    @Ignore
-    public Users(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }*/
 
     // Setter and getters for the table's properties
-
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
-    public int getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-    public String getName() {
-        return name;
-    }
-    public void setTripId(int trip_id) {this.trip_id = trip_id;}
-    public int getTripId() {
-        return trip_id;
+    public String getUserName() {
+        return userName;
     }
 
 }

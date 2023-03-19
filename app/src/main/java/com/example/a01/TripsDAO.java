@@ -30,12 +30,21 @@ public interface TripsDAO {
 
     // Select all from trips specifying an user ID
     @Query("SELECT * FROM Trips WHERE user_id" +
-            " = (SELECT id FROM Users WHERE id = :userId) ")
+            " = (SELECT user_id FROM Users WHERE user_id = :userId) ")
     java.util.List<Trips> getTripsFromUserID(long userId);
 
     // Select all from trips specifying a city ID
     @Query("SELECT * FROM Trips WHERE city_id" +
-            " = (SELECT id FROM Cities WHERE id = :cityId) ")
+            " = (SELECT city_id FROM Cities WHERE city_id = :cityId) ")
     java.util.List<Trips> getTripsFromCityID(long cityId);
 
+    // Select all from trips specifying a user name
+    @Query("SELECT * FROM Trips WHERE user_id" +
+            " = (SELECT user_id FROM Users WHERE user_name = :userName) ")
+    java.util.List<Trips> getTripsFromUserName(String userName);
+
+    // Select packing_list from trips specifying a user name
+    @Query("SELECT packing_list FROM Trips WHERE user_id" +
+            " = (SELECT user_id FROM Users WHERE user_name = :userName) ")
+    String getPackingListFromUserName(String userName);
 }

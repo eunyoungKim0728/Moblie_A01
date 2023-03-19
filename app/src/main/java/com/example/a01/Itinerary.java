@@ -33,8 +33,8 @@ public class Itinerary extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "OnClick Packing");
-                startActivity(new Intent(getApplicationContext(),Packing.class));
+                Log.d(TAG, "OnClick Add Travellers");
+                startActivity(new Intent(getApplicationContext(),ResultList.class));
             }
         });
 
@@ -47,7 +47,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[CN Tower]");
                 String url = "https://www.cntower.ca/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", url);
+                intent.putExtra("url", intent.getStringExtra(url));
                 startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[Aquarium]");
                 String url = "https://www.ripleyaquariums.com/canada/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", url);
+                intent.putExtra("url", intent.getStringExtra(url));
                 startActivity(intent);
             }
         });
@@ -71,7 +71,7 @@ public class Itinerary extends AppCompatActivity {
                 String url = "https://paitoronto.com/";
                 Log.d(TAG, "IMAGE[PAI]");
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", url);
+                intent.putExtra("url", intent.getStringExtra(url));
                 startActivity(intent);
             }
         });
@@ -83,7 +83,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[Casa Loma]");
                 String url = "https://casaloma.ca/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", url);
+                intent.putExtra("url", intent.getStringExtra(url));
                 startActivity(intent);
             }
         });

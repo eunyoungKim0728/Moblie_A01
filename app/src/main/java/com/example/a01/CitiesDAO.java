@@ -26,6 +26,6 @@ public interface CitiesDAO {
     java.util.List<Cities> getCities();
 
     // Select the id by the name of the city
-    @Query("SELECT id FROM Cities WHERE name=:name")
+    @Query("SELECT city_id FROM Cities WHERE city_name=:name")
     int getCityIDByName(String name);
 }

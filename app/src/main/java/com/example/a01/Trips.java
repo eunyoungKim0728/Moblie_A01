@@ -7,43 +7,50 @@ package com.example.a01;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName="Trips")
+// Define table Trips and constraint foreign keys
+@Entity(tableName="Trips", foreignKeys = {@ForeignKey(entity = Cities.class,
+        parentColumns = "city_id",
+        childColumns = "city_id",
+        onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = Users.class,
+        parentColumns = "user_id",
+        childColumns = "user_id",
+        onDelete = ForeignKey.CASCADE)
+        })
+
+// Define class for Trips
 public class Trips {
 
-    // Define properties and column name
+    // Define properties and columns' names
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    private long id;
-    @NonNull
     @ColumnInfo(name="trip_id")
-    private long tripId;
+    private long id;
 
-    @NonNull
-    private long city_id;
     @NonNull
     @ColumnInfo(name="city_id")
     private long cityId;
 
     @NonNull
-    private long user_id;
-    @NonNull
     @ColumnInfo(name="user_id")
     private long userId;
 
-    private String packing_list;
     @ColumnInfo(name="packing_list")
     private String packingList;
 
+    // Constructors
     // TODO check about the constructors
+    @Ignore
     public Trips() {}
 
-    public Trips(int tripId, int cityId, int userId) {
-        this.tripId = tripId;
+    public Trips(long cityId, long userId, String packingList) {
         this.cityId = cityId;
         this.userId = userId;
-        this.packingList = "";
+        this.packingList = packingList;
     }
 
     // Setter and getters to table's properties
@@ -51,8 +58,8 @@ public class Trips {
         return id;
     }
 
-    public void setId(long tripId) {
-        this.id = tripId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public long getCityId() {
@@ -71,11 +78,11 @@ public class Trips {
         this.userId = userId;
     }
 
-    public void setPackingList(String packing_list) {
-        this.packing_list = packing_list;
+    public void setPackingList(String packingList) {
+        this.packingList = packingList;
     }
 
     public String getPackingList() {
-        return packing_list;
+        return packingList;
     }
 }

@@ -4,6 +4,7 @@
     <string name="city_quebec">Quebec</string>
     <string name="city_vancouver">Vancouver</string>
     <string name="packing_list">Packing List</string>
+    <string name="add_traveller">Add Travellers</string>
     <string-array name="day_spinner">
         <item>Day 1</item>
         <item>Day 2</item>

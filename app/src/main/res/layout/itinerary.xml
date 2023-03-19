@@ -22,15 +22,17 @@
                 android:layout_marginTop="15dp"
                 android:text="Toronto Trip - Itinenary" />
 
+
             <ImageView
                 android:id="@+id/cntowerImg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:layout_below="@id/dayText"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="107dp"
+                android:layout_marginEnd="0dp"
                 android:src="@drawable/cntower" />
-
 
             <TextView
                 android:id="@+id/des_cntower"
@@ -113,20 +115,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/res2"
-                android:layout_marginRight="30dp"
                 android:layout_alignParentRight="true"
-                android:text="@string/packing_list" />
+                android:layout_marginTop="-939dp"
+                android:layout_marginRight="33dp"
+                android:text="@string/add_traveller" />
 
-            <Button
-                android:id="@+id/moreInfoBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="60dp"
-                android:layout_marginBottom="50dp"
-                android:layout_toLeftOf="@id/nextBtn"
-                android:text="Restaurant Info"
-                android:textSize="10sp" />
         </RelativeLayout>
 
     </ScrollView>
