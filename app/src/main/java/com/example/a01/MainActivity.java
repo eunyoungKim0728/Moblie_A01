@@ -13,6 +13,8 @@ import static android.app.PendingIntent.getActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
+import androidx.room.Room;
+
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
@@ -30,6 +32,12 @@ import android.widget.ListView;
 import com.example.a01.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +45,52 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= "MainActivity";
+    public Cities[] cities;
+
+    private String getJsonString() {
+        String json = "";
+
+        try {
+            InputStream is = getAssets().open("db.json");
+            int fileSize = is.available();
+
+            byte[] buffer = new byte[fileSize];
+            is.read(buffer);
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+
+        return json;
+    }
+
+    private void jsonParsing(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+
+            JSONArray cityArray = jsonObject.getJSONArray("City");
+
+            for (int i = 0; i < cityArray.length(); i++)
+            {
+                JSONObject cityObject = cityArray.getJSONObject(i);
+
+                Cities city = new Cities();
+
+                city.setCityId(cityObject.getInt("cityID"));
+                city.setCityName(cityObject.getString("cityName"));
+                city.setPrice(cityObject.getString("price"));
+
+                // cities.add(city);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+
         Button torontoBtn = binding.buttonToronto;
         torontoBtn.setOnClickListener(new View.OnClickListener() {
             @Override

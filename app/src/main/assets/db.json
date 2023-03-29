@@ -1,3 +1,18 @@
-{ "id" : 1, "name": "Toronto", "price": "$150","tour guide":"Yujin, Eunyoung",
-  "spot": "CN Tower, Ripley's Aquarium, Casa Loma"}
-
+{
+  "City" : [
+    {
+      "cityID" : 1,
+      "cityName" : "Toronto",
+      "price" : "$150",
+      "tourGuide" : ["Yujin", "Eunyoung"],
+      "tourSpot" : ["CN Tower", "Ripley's Aquarium", "Casa Loma"]
+    },
+    {
+      "cityID" : 2,
+      "cityName" : "Quebec",
+      "price" : "$1000",
+      "tourGuide" : ["Eunyoung", "Maísa"],
+      "tourSpot" : []
+    }
+  ]
+}
