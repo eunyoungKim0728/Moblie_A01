@@ -55,7 +55,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[CN Tower]");
                 String url = "https://www.cntower.ca/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", intent.getStringExtra(url));
+                intent.putExtra("url", url);
                 startActivity(intent);
             }
         });
@@ -67,7 +67,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[Aquarium]");
                 String url = "https://www.ripleyaquariums.com/canada/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", intent.getStringExtra(url));
+                intent.putExtra("url", url);
                 startActivity(intent);
             }
         });
@@ -79,7 +79,7 @@ public class Itinerary extends AppCompatActivity {
                 String url = "https://paitoronto.com/";
                 Log.d(TAG, "IMAGE[PAI]");
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", intent.getStringExtra(url));
+                intent.putExtra("url", url);
                 startActivity(intent);
             }
         });
@@ -91,7 +91,7 @@ public class Itinerary extends AppCompatActivity {
                 Log.d(TAG, "IMAGE[Casa Loma]");
                 String url = "https://casaloma.ca/";
                 Intent intent = new Intent(getApplicationContext(), WebViewList.class);
-                intent.putExtra("url", intent.getStringExtra(url));
+                intent.putExtra("url", url);
                 startActivity(intent);
             }
         });
@@ -119,6 +119,7 @@ public class Itinerary extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "In OnOptionsItemSelected");
+        Intent musicService = new Intent(this,MusicService.class);
         boolean result =false;
         Intent intent = null;
         switch(item.getItemId()) {
@@ -140,8 +141,8 @@ public class Itinerary extends AppCompatActivity {
             case R.id.Main:
                 intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
-                //stopService(musicService);
                 result = true;
+                stopService(musicService);
                 break;
 
             default:

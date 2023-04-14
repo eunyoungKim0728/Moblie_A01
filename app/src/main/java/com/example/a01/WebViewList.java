@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,7 @@ public class WebViewList extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView wv, String url) {
+
                 return false;
             }
         });
@@ -71,6 +73,7 @@ public class WebViewList extends AppCompatActivity {
         });
 
         String url = getIntent().getStringExtra("url");
+        Log.d(TAG, "url2 :" + url);
         webView.loadUrl(url);
 
     }
