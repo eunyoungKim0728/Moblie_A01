@@ -2,7 +2,7 @@
    File name   :   Trips.java
    Description :   Define the properties of table called Trips in the database.
 */
-package com.example.a01;
+package com.example.a01.database;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

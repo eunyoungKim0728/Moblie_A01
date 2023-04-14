@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.a01.database.PlannerDatabase;
+import com.example.a01.database.Trips;
 import com.example.a01.databinding.ViewDetailsBinding;
 
 import android.util.Log;

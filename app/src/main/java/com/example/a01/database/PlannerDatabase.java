@@ -2,7 +2,7 @@
    File name   :   PlannerDatabase.java
    Description :   Abstract class to define the properties of the application database.
 */
-package com.example.a01;
+package com.example.a01.database;
 
 import android.content.Context;
 import android.util.Log;

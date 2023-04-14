@@ -27,6 +27,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
 
+import com.example.a01.database.Cities;
+import com.example.a01.database.PlannerDatabase;
+import com.example.a01.database.Trips;
+import com.example.a01.database.Users;
 import com.example.a01.databinding.PackingBinding;
 
 
@@ -196,22 +200,22 @@ public class Packing extends AppCompatActivity{
 
                 String packingList = new String();
 
-                if(checkBox1 != null) {
+                if(ch1 != null) {
                     packingList += ch1 + "\n";
                 }
-                if(checkBox2 != null) {
+                if(ch2 != null) {
                     packingList += ch2 + "\n";
                 }
-                if(checkBox3 != null) {
+                if(ch3 != null) {
                     packingList += ch3 + "\n";
                 }
-                if(checkBox4 != null) {
+                if(ch4 != null) {
                     packingList += ch4 + "\n";
                 }
-                if(checkBox5 != null) {
+                if(ch5 != null) {
                     packingList += ch5 + "\n";
                 }
-                if(checkBox6 != null) {
+                if(ch6 != null) {
                     packingList += ch6 + "\n";
                 }
 

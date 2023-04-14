@@ -3,7 +3,7 @@
    Description :   Implements an interface to create a table called users in a database.
 */
 
-package com.example.a01;
+package com.example.a01.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

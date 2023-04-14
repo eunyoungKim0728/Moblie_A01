@@ -3,11 +3,8 @@ package com.example.a01;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,11 +13,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a01.database.PlannerDatabase;
 import com.example.a01.databinding.ActivityResultListBinding;
 import com.example.a01.databinding.ResultListBinding;
 import com.example.a01.databinding.ListItemBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResultList extends AppCompatActivity {

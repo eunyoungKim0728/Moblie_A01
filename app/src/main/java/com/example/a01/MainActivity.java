@@ -13,7 +13,6 @@ import static android.app.PendingIntent.getActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
-import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
@@ -22,15 +21,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.util.Log;
-import android.widget.ListView;
 
 
+import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
-import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,8 +34,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -82,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 city.setCityId(cityObject.getInt("cityID"));
                 city.setCityName(cityObject.getString("cityName"));
-                city.setPrice(cityObject.getString("price"));
+                //city.setPrice(cityObject.getString("price"));
 
                 // cities.add(city);
             }

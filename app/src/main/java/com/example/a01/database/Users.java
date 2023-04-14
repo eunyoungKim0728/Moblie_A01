@@ -2,7 +2,7 @@
    File name   :   Users.java
    Description :   Define the properties of table called Users in the database.
 */
-package com.example.a01;
+package com.example.a01.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
