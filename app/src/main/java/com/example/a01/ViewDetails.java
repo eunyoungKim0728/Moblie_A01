@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.a01.database.PlannerDatabase;
 import com.example.a01.database.Trips;
+import com.example.a01.database.Users;
 import com.example.a01.databinding.ViewDetailsBinding;
 
 import android.util.Log;
@@ -43,6 +44,8 @@ public class ViewDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Delete traveller from database");
+
+                // get trip by user name
                 List<Trips> tripsList = db.getTripsDAO().getTripsFromUserName(userName);
 
                 // delete trip of the user
@@ -50,7 +53,13 @@ public class ViewDetails extends AppCompatActivity {
                     db.getTripsDAO().delete(tripsList.get(i));
                 }
 
-                // TODO Delete user from Users table
+                // get user by user name
+                List<Users> userTrips = db.getUsersDAO().getUserInfo(userName);
+
+                // delete user from list
+                for (int i = 0; i < userTrips.size(); i++) {
+                    db.getUsersDAO().delete(userTrips.get(i));
+                }
 
                 startActivity(new Intent(getApplicationContext(),ResultList.class));
             }

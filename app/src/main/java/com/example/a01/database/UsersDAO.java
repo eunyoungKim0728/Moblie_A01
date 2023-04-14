@@ -36,7 +36,7 @@ public interface UsersDAO {
     java.util.List<String> getAllUsersName();
 
     // Select all columns and rows from table Users
-    /*@Query("SELECT * FROM Users WHERE user_id=" +
+    @Query("SELECT * FROM Users WHERE user_id=" +
             "(SELECT user_id FROM Users WHERE user_name=:name)")
-    java.util.List<Users> getUserInfo();*/
+    java.util.List<Users> getUserInfo(String name);
 }
