@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG= "MainActivity";
     public Cities[] cities;
 
+
     private String getJsonString() {
         String json = "";
 
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
 
+        Intent musicService = new Intent(this,MusicService.class);
+
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
@@ -101,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Toronto OnClick");
                 startActivity(new Intent(getApplicationContext(), Itinerary.class));
+                stopService(musicService);
+                startService(musicService);
             }
         });
         Button quebecBtn = binding.buttonQuebec;

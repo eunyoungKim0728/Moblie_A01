@@ -10,6 +10,8 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.a01.databinding.ViewJsonfileBinding;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 
 public class ViewJSONFile extends AppCompatActivity {
 
+    public static final String TAG= "ViewJSONFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +38,20 @@ public class ViewJSONFile extends AppCompatActivity {
         TextView priceTV = binding.price;
         TextView guideTV = binding.guide;
         TextView destTV = binding.destination;
+        Intent musicService = new Intent(this,MusicService.class);
 
-        try {
+        Button homeBtn = binding.homeBtn;
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Log.d(TAG, "Home button OnClick");
+               stopService(musicService);
+               startActivity(new Intent(getApplicationContext(), MainActivity.class));
+               stopService(musicService);
+           }
+        });
+
+        /*try {
             InputStream inputStream = getAssets().open("db.json");
             BufferedReader reader = new BufferedReader((new InputStreamReader(inputStream)));
             String line = null;
@@ -63,6 +78,6 @@ public class ViewJSONFile extends AppCompatActivity {
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

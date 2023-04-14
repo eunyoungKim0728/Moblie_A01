@@ -28,6 +28,7 @@ import com.example.a01.databinding.ItineraryBinding;
 public class Itinerary extends AppCompatActivity {
     public static final String TAG = "Itinerary";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class Itinerary extends AppCompatActivity {
         //databinding
         ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
 
+        Intent musicService = new Intent(this,MusicService.class);
         Button nextBtn=binding.nextBtn;
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +140,7 @@ public class Itinerary extends AppCompatActivity {
             case R.id.Main:
                 intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
+                //stopService(musicService);
                 result = true;
                 break;
 
