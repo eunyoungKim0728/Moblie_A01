@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    FILE		: packing.xml
+    PROJECT	: Trip Planner
+    PROGRAMMER	: Hyewon Lee, Maisa Wolff Resplande, Eunyoung Kim, Yujin Jeong
+    DATE		: February 12, 2023
+    DESCRIPTION	: This xml file contains layout for packing page
+-->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <RelativeLayout
+        android:id="@+id/PackingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".Packing">
+
+        <TextView
+            android:id="@+id/packingList"
+            style="@style/dayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/packing_list" />
+
+        <EditText
+            android:id="@+id/nameEdit"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/packingList"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:inputType="textPersonName"
+            android:hint="Enter your name"
+            />
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/packingList"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="130dp"
+            android:layout_alignParentRight="true"
+            android:text="enter"
+            android:textSize="8dp"/>
+
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/nameEdit"
+            style="@style/itineraryTextView"
+            android:text="" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTextView"
+            android:text="Presto Card" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox1"
+            android:text="Wallet" />
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox2"
+            android:text="Toiletries" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox3"
+            android:text="Powerbank" />
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox4"
+            android:text="Bag" />
+
+        <CheckBox
+            android:id="@+id/checkBox6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox5"
+            android:text="Happy mind" />
+
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox6"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:text="Summary"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkBox6"
+            android:layout_marginLeft="30dp"
+            android:text="Itinerary"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/listBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="158dp"
+            android:layout_below="@+id/checkBox6"
+            android:text="Add"
+            android:textSize="10sp" />
+        <!--android:layout_below= "@+id/listButton" -->
+
+
+    </RelativeLayout>
+</layout>

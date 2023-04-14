@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/dayText"
+                style="@style/dayTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Toronto Trip - Itinenary" />
+
+
+            <ImageView
+                android:id="@+id/cntowerImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dayText"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="107dp"
+                android:layout_marginEnd="0dp"
+                android:src="@drawable/cntower" />
+
+            <TextView
+                android:id="@+id/des_cntower"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="none"
+                android:layout_below="@+id/cntowerImg"
+                android:text="@string/iter1" />
+
+            <ImageView
+                android:id="@+id/aqua_img"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_below="@id/des_cntower"
+                android:layout_gravity="center"
+                android:src="@drawable/aquarium" />
+
+            <TextView
+                android:id="@+id/des_aquarium"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aqua_img"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter2" />
+
+            <ImageView
+                android:id="@+id/res1_img"
+                android:layout_width="match_parent"
+                android:layout_height="183dp"
+                android:layout_gravity="center"
+                android:layout_below="@id/des_aquarium"
+                android:src="@drawable/restaurant1" />
+
+            <TextView
+                android:id="@+id/des_res1"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/res1_img"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter3" />
+
+            <ImageView
+                android:id="@+id/casaloma_img"
+                android:layout_width="310dp"
+                android:layout_height="183dp"
+                android:layout_marginLeft="50dp"
+                android:layout_gravity="center"
+                android:layout_below="@id/des_res1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casaloma" />
+
+            <TextView
+                android:id="@+id/des_casa"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/casaloma_img"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter4" />
+
+            <TextView
+                android:id="@+id/res2"
+                style="@style/itineraryTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/des_casa"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="@string/iter5" />
+
+            <Button
+                android:id="@+id/nextBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/res2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-939dp"
+                android:layout_marginRight="33dp"
+                android:text="@string/add_traveller" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</layout>

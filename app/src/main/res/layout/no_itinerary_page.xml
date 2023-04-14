@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NoItinerary1">
+
+        <TextView
+            android:id="@+id/noItinerary0"
+            style="@style/noItineraryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/noiter0"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="28dp" />
+
+        <TextView
+                android:id="@+id/noItinerary1"
+                style="@style/noItineraryTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/noItinerary0"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/noiter1"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="28dp" />
+
+        <TextView
+            android:id="@+id/noItinerary2"
+            style="@style/noItineraryTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noItinerary1"
+            android:layout_marginTop="10dp"
+            android:text="@string/noiter2"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noItinerary2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+
+            android:text="" />
+
+        <SeekBar
+            android:id="@+id/priceSeek"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:max="3000"
+            android:min="500"
+            android:progress="500"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_below="@+id/priceSeek"
+            android:layout_alignParentRight="true"
+            android:text="Submit" />
+
+        <Button
+            android:id="@+id/mainButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/priceSeek"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_toLeftOf="@+id/submit"
+            android:text="@string/noBtn"
+            android:textSize="8sp" />
+
+
+
+    </RelativeLayout>
+</layout>

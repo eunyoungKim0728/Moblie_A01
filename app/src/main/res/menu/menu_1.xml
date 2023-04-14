@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/Toronto"
+        android:title="Toronto" />
+    <item
+        android:id="@+id/Quebec"
+        android:title="Quebec" />
+    <item
+        android:id="@+id/Vancouver"
+        android:title="Vancouver" />
+    <item
+        android:id="@+id/Main"
+        android:title="Main Page" />
+
+</menu>

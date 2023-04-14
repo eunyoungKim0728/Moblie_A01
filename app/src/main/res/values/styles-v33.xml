@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dayTextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor"> @color/dayColour</item>
+    </style>
+
+
+    <style name="itineraryTextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor"> @color/black</item>
+    </style>
+
+    <style name="noItineraryTextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor"> @color/black</item>
+    </style>
+
+
+
+    <style name="noItineraryTextView2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor"> @color/black</item>
+    </style>
+
+    <style name="jsonTextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor"> @color/black</item>
+        <item name= "android:padding">10dp</item>
+    </style>
+
+    <style name="jsonTextView2">
+        <item name="android:textSize">20sp</item>
+        <item name= "android:padding">10dp</item>
+    </style>
+
+</resources>
