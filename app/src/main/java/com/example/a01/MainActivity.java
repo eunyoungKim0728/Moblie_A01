@@ -9,12 +9,14 @@ package com.example.a01;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
+
 import androidx.databinding.DataBindingUtil;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -104,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1: {
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
+
                     Log.d("Trip Planner", "permission denied");
                 }
                 return;

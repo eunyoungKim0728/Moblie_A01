@@ -28,7 +28,7 @@ import com.example.a01.databinding.NoItineraryPageBinding;
 
 
 
-// NAME   : NoItinerary
+// NAME   : NoItinerary1
 // PURPOSE: this class has a databinding button that allows user to go back to the main page
 public class NoItinerary1 extends AppCompatActivity {
 
@@ -119,8 +119,9 @@ public class NoItinerary1 extends AppCompatActivity {
 
             CharSequence name = getString(R.string.Noti_channel_name);
             String description = getString(R.string.Noti_channel_dis);
-            NotificationChannel channel = new NotificationChannel("My Channel", name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("No Itinerary Channel", name, NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription(description);
+
             // Register the channel with the system
             manager.createNotificationChannel(channel);
             if (manager.areNotificationsEnabled()) {
