@@ -7,20 +7,15 @@
 
 package com.example.a01;
 
-
-import static android.app.PendingIntent.getActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.core.app.NotificationCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -35,64 +30,11 @@ import android.util.Log;
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= "MainActivity";
     public Cities[] cities;
-
-
-    private String getJsonString() {
-        String json = "";
-
-        try {
-            InputStream is = getAssets().open("db.json");
-            int fileSize = is.available();
-
-            byte[] buffer = new byte[fileSize];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, "UTF-8");
-        }
-        catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
-
-        return json;
-    }
-
-    private void jsonParsing(String json) {
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-
-            JSONArray cityArray = jsonObject.getJSONArray("City");
-
-            for (int i = 0; i < cityArray.length(); i++)
-            {
-                JSONObject cityObject = cityArray.getJSONObject(i);
-
-                Cities city = new Cities();
-
-                city.setCityId(cityObject.getInt("cityID"));
-                city.setCityName(cityObject.getString("cityName"));
-                //city.setPrice(cityObject.getString("price"));
-
-                // cities.add(city);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Quebec OnClick");
                 startService(NoItineraryService);
-                //startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+
             }
         });
         Button vancouverBtn = binding.buttonVancouver;
@@ -131,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "Vancouver OnClick");
                 startService(NoItineraryService);
-                //startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+
             }
         });
 
@@ -171,6 +113,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
+        ad.setIcon(R.mipmap.ic_launcher);
+        ad.setTitle("Trip Planner");
+        ad.setMessage("Do you want to quit Trip Planner?");
+
+        ad.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MainActivity.super.onBackPressed();
+            }
+        });
+
+        ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        ad.show();
+
+    }
 
     @SuppressLint("RestrictedApi")
     @Override
