@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent musicService = new Intent(this,MusicService.class);
+        Intent NoItineraryService = new Intent(this,NoItineraryService.class);
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -75,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Quebec OnClick");
-                setNotification();
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+                startService(NoItineraryService);
+
             }
         });
         Button vancouverBtn = binding.buttonVancouver;
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Vancouver OnClick");
-                setNotification();
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+                startService(NoItineraryService);
+
             }
         });
 
@@ -101,42 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    protected void setNotification() {
-        Log.d(TAG,"Notification created");
-        Intent notificationIntent = new Intent(this, NoItinerary1.class);
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        int pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent,pendingFlag);
-
-        int icon = R.drawable.ic_launcher_background;
-
-        CharSequence tickerText = "MyTickerText";
-        CharSequence contentTitle = "Trip Planner";
-        CharSequence contentText = "Did you participate our survey?\nWe need your help!";
-        NotificationCompat.Builder myBuilder = new NotificationCompat.Builder(this, "My Channel")
-                .setSmallIcon(icon)
-                //.setTicker(t)
-                .setContentTitle(contentTitle)
-                .setContentText(contentText)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-
-        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-            CharSequence name = getString(R.string.Noti_channel_name);
-            String description = getString(R.string.Noti_channel_dis);
-            NotificationChannel channel = new NotificationChannel("My Channel", name, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription(description);
-            // Register the channel with the system
-            manager.createNotificationChannel(channel);
-            if (manager.areNotificationsEnabled()) {
-                manager.notify(1,myBuilder.build());
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
         }
 
     }
