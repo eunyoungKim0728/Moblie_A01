@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import android.database.Cursor;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 
+import com.example.a01.R;
 import com.example.a01.contentprovider.AdminContentProvider;
 import com.example.a01.database.AdminListDB;
 import com.example.a01.databinding.AdminInfoBinding;

@@ -4,28 +4,16 @@
 //FIRST VERSION : 2023.03.18
 //DESCRIPTION   : This file shows the result of data
 //
-package com.example.a01;
+package com.example.a01.json;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-
+import com.example.a01.MyResult;
 import com.example.a01.databinding.AdminInfoBinding;
-import com.example.a01.databinding.AdminInfoListBinding;
+import com.example.a01.json.WebAdminConnect;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

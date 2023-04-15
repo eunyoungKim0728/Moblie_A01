@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.a01.R;
 import com.example.a01.database.PlannerDatabase;
 import com.example.a01.database.Trips;
 import com.example.a01.database.Users;
@@ -28,7 +29,7 @@ public class ViewDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "In OnCreate");
 
-        ViewDetailsBinding binding = DataBindingUtil.setContentView(this,R.layout.view_details);
+        ViewDetailsBinding binding = DataBindingUtil.setContentView(this, R.layout.view_details);
 
         TextView detailsTextView = binding.detailsTextView;
         detailsTextView.setText(getIntent().getStringExtra("packingList"));
@@ -61,7 +62,7 @@ public class ViewDetails extends AppCompatActivity {
                     db.getUsersDAO().delete(userTrips.get(i));
                 }
 
-                startActivity(new Intent(getApplicationContext(),ResultList.class));
+                startActivity(new Intent(getApplicationContext(), TravellersList.class));
             }
         });
 

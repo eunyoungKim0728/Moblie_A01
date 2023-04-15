@@ -4,7 +4,7 @@
 //FIRST VERSION : 2023.03.18
 //DESCRIPTION   : This file shows the itinerary page and button
 //
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -16,14 +16,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.util.Log;
 
 
+import com.example.a01.MainActivity;
+import com.example.a01.R;
+import com.example.a01.WebViewList;
 import com.example.a01.databinding.ItineraryBinding;
+import com.example.a01.services.MusicService;
 
 public class Itinerary extends AppCompatActivity {
     public static final String TAG = "Itinerary";
@@ -33,21 +35,23 @@ public class Itinerary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
-        //databinding
-        ItineraryBinding binding = DataBindingUtil.setContentView(this,R.layout.itinerary);
 
-        Intent musicService = new Intent(this,MusicService.class);
+        //databinding
+        ItineraryBinding binding = DataBindingUtil.setContentView(this, R.layout.itinerary);
+
+        // initiate service for audio when clicking the button
+        Intent musicService = new Intent(this, MusicService.class);
         Button nextBtn=binding.nextBtn;
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "OnClick Add Travellers");
-                startActivity(new Intent(getApplicationContext(),ResultList.class));
+                startActivity(new Intent(getApplicationContext(), TravellersList.class));
             }
         });
 
 
-
+        // images
         ImageView cntowerImg = binding.cntowerImg;
         cntowerImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,17 +133,17 @@ public class Itinerary extends AppCompatActivity {
                 result = true;
                 break;
             case R.id.Quebec:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Vancouver:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Main:
-                intent=new Intent(this,MainActivity.class);
+                intent=new Intent(this, MainActivity.class);
                 startActivity(intent);
                 result = true;
                 stopService(musicService);
