@@ -23,6 +23,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
     private GoogleMap mMap;
+    private BootBroadcastReceiver bootReceiver;
 
 
 
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
+
+        bootReceiver = new BootBroadcastReceiver();
 
         // check permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
@@ -161,6 +165,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        registerReceiver(bootReceiver, filter);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        unregisterReceiver(bootReceiver);
     }
 
 
