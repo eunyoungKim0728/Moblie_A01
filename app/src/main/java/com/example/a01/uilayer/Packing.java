@@ -75,7 +75,6 @@ public class Packing extends AppCompatActivity{
             }
         });
 
-
         Button submitBtn = binding.submitBtn;
         EditText nameEdit = binding.nameEdit;
         Button listBtn = binding.listBtn;

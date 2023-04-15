@@ -99,8 +99,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".uilayer.ViewDetails" />
-        <activity
-            android:name=".uilayer.AdminInfo" />
+        <activity android:name=".uilayer.AdminInfo" />
+        <activity android:name=".uilayer.CalendarEvent" />
     </application>
 
 </manifest>

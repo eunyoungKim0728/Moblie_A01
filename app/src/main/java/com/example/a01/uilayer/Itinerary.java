@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +42,8 @@ public class Itinerary extends AppCompatActivity {
 
         // initiate service for audio when clicking the button
         Intent musicService = new Intent(this, MusicService.class);
+
+        // button to add new traveller
         Button nextBtn=binding.nextBtn;
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +53,17 @@ public class Itinerary extends AppCompatActivity {
             }
         });
 
+        // button to add trip to calendar
+        Button addToCalendar = binding.addToCalendar;
+
+        addToCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "OnClick Add to Calendar");
+                startActivity(new Intent(getApplicationContext(), CalendarEvent.class));
+
+            }
+        });
 
         // images
         ImageView cntowerImg = binding.cntowerImg;
