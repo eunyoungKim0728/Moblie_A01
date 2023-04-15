@@ -40,7 +40,7 @@ import com.example.a01.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG= "MainActivity";
-    private static final int PERMISSIONS_REQUEST_LOCATION = 1;
+    private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
 
     @Override
@@ -51,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
         // check permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST);
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSIONS_REQUEST);
+        }
+
 
         Intent musicService = new Intent(this,MusicService.class);
         Intent NoItineraryService = new Intent(this,NoItineraryService.class);
@@ -103,11 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
-        }
-
     }
 
 
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case PERMISSIONS_REQUEST_LOCATION: {
+            case PERMISSIONS_REQUEST: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 } else {
