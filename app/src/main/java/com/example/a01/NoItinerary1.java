@@ -8,8 +8,14 @@
 package com.example.a01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.databinding.DataBindingUtil;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,16 +36,21 @@ public class NoItinerary1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.d(TAG, "In OnCreate");
         super.onCreate(savedInstanceState);
         NoItineraryPageBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.no_itinerary_page);
+
+        Intent NoItineraryService = new Intent(this,NoItineraryService.class);
 
         Button mainBtn = binding.mainButton;
         mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "In OnClick Listener");
+                stopService(NoItineraryService);
+                setNotification();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
@@ -73,10 +84,49 @@ public class NoItinerary1 extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "In OnClick MainActivity");
                 Toast.makeText(getApplicationContext(),"Thank you for taking your time",Toast.LENGTH_SHORT).show();
+                stopService(NoItineraryService);
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
 
+
+    }
+
+    protected void setNotification() {
+        Log.d(TAG,"Notification created");
+        Intent notificationIntent = new Intent(this, NoItinerary1.class);
+        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        int pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent,pendingFlag);
+
+        int icon = R.drawable.ic_launcher_background;
+
+        CharSequence tickerText = "Oops! you missed a survey!";
+        CharSequence contentTitle = "Trip Planner";
+        CharSequence contentText = "Did you participate our survey?\nWe need your help!";
+        NotificationCompat.Builder myBuilder = new NotificationCompat.Builder(this, "My Channel")
+                .setSmallIcon(icon)
+                .setTicker(tickerText)
+                .setContentTitle(contentTitle)
+                .setContentText(contentText)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+
+        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            CharSequence name = getString(R.string.Noti_channel_name);
+            String description = getString(R.string.Noti_channel_dis);
+            NotificationChannel channel = new NotificationChannel("My Channel", name, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(description);
+            // Register the channel with the system
+            manager.createNotificationChannel(channel);
+            if (manager.areNotificationsEnabled()) {
+                manager.notify(1,myBuilder.build());
+            }
+        }
 
     }
 
