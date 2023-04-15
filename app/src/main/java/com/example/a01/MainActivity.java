@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // button to see admin info
         Button adminBtn = binding.adminBtn;
         adminBtn.setOnClickListener(new View.OnClickListener() {
             @Override

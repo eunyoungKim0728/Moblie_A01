@@ -21,6 +21,7 @@ public class AdminInfo extends AppCompatActivity {
 
     private static final String TAG= "AdminInfo";
 
+    // uses a content provider to manipulate the database for admin info
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
