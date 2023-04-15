@@ -4,7 +4,7 @@
 //FIRST VERSION : 2023.03.18
 //DESCRIPTION   : This file show the check list
 //
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -27,11 +27,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.util.Log;
 
+import com.example.a01.MainActivity;
+import com.example.a01.R;
 import com.example.a01.database.Cities;
 import com.example.a01.database.PlannerDatabase;
 import com.example.a01.database.Trips;
 import com.example.a01.database.Users;
 import com.example.a01.databinding.PackingBinding;
+import com.example.a01.json.ViewJSONFile;
 
 
 public class Packing extends AppCompatActivity{
@@ -52,14 +55,14 @@ public class Packing extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         Log.d(TAG, "In OnCreate");
 
-        PackingBinding binding = DataBindingUtil.setContentView(this,R.layout.packing);
+        PackingBinding binding = DataBindingUtil.setContentView(this, R.layout.packing);
 
         Button nextBtn = binding.nextBtn;
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Go to ViewJSONFileActivity");
-                startActivity(new Intent(getApplicationContext(),ViewJSONFile.class));
+                startActivity(new Intent(getApplicationContext(), ViewJSONFile.class));
             }
         });
 
@@ -71,7 +74,6 @@ public class Packing extends AppCompatActivity{
                 startActivity(new Intent(getApplicationContext(),Packing.class));
             }
         });
-
 
         Button submitBtn = binding.submitBtn;
         EditText nameEdit = binding.nameEdit;
@@ -226,7 +228,7 @@ public class Packing extends AppCompatActivity{
 
                 db.getTripsDAO().insert(new Trips(cityId, userId, packingList));
 
-                Intent intent = new Intent(getBaseContext(), ResultList.class);
+                Intent intent = new Intent(getBaseContext(), TravellersList.class);
 
                 startActivity(intent);
             }
@@ -256,22 +258,22 @@ public class Packing extends AppCompatActivity{
         Intent intent = null;
         switch(item.getItemId()) {
             case R.id.Toronto:
-                intent=new Intent(this,Itinerary.class);
+                intent=new Intent(this, Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Quebec:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Vancouver:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Main:
-                intent=new Intent(this,MainActivity.class);
+                intent=new Intent(this, MainActivity.class);
                 startActivity(intent);
                 result = true;
                 break;

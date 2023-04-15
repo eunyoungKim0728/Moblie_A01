@@ -1,28 +1,20 @@
-package com.example.a01;
+package com.example.a01.json;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.a01.MainActivity;
+import com.example.a01.R;
 import com.example.a01.databinding.ViewJsonfileBinding;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import android.util.Log;
+import com.example.a01.services.MusicService;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
 
 public class ViewJSONFile extends AppCompatActivity {
 
@@ -38,7 +30,7 @@ public class ViewJSONFile extends AppCompatActivity {
         TextView priceTV = binding.price;
         TextView guideTV = binding.guide;
         TextView destTV = binding.destination;
-        Intent musicService = new Intent(this,MusicService.class);
+        Intent musicService = new Intent(this, MusicService.class);
 
         Button homeBtn = binding.homeBtn;
         homeBtn.setOnClickListener(new View.OnClickListener() {

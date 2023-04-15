@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -29,6 +30,12 @@
             </intent-filter>
 
         </receiver>
+
+        <provider
+            android:name=".contentprovider.AdminContentProvider"
+            android:authorities="com.example.a01"
+            android:enabled="true"
+            android:exported="true"></provider>
 
         <meta-data
             android:name="com.google.android.actions"
@@ -54,36 +61,36 @@
             android:label="@string/title_activity_maps" />
 
         <service
-            android:name=".NoItineraryService"
+            android:name=".services.NoItineraryService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".MusicService"
+            android:name=".services.MusicService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".ViewJSONFile"
+            android:name=".json.ViewJSONFile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ResultList"
+            android:name=".uilayer.TravellersList"
             android:exported="false" />
         <activity
-            android:name=".ResultAdminList"
+            android:name=".json.ResultAdminList"
             android:exported="false" />
         <activity
-            android:name=".NoItinerary1"
+            android:name=".uilayer.NoItinerary"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Itinerary"
+            android:name=".uilayer.Itinerary"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -93,7 +100,7 @@
             android:name=".WebViewList"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".Packing"
+            android:name=".uilayer.Packing"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -104,7 +111,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewDetails" />
+        <activity android:name=".uilayer.ViewDetails" />
+        <activity android:name=".uilayer.AdminInfo" />
+        <activity android:name=".uilayer.CalendarEvent" />
     </application>
 
 </manifest>

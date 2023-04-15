@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a01.R;
 import com.example.a01.database.PlannerDatabase;
 import com.example.a01.databinding.ActivityResultListBinding;
 import com.example.a01.databinding.ResultListBinding;
@@ -20,7 +21,7 @@ import com.example.a01.databinding.ListItemBinding;
 
 import java.util.List;
 
-public class ResultList extends AppCompatActivity {
+public class TravellersList extends AppCompatActivity {
 
     private @NonNull ActivityResultListBinding binding;
 
@@ -31,14 +32,14 @@ public class ResultList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ResultListBinding binding = DataBindingUtil.setContentView(this,R.layout.result_list);
+        ResultListBinding binding = DataBindingUtil.setContentView(this, R.layout.result_list);
 
 
         Button itineraryBtn = binding.backButton;
         itineraryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Itinerary.class));
+                startActivity(new Intent(getApplicationContext(), Itinerary.class));
             }
         });
 
@@ -46,7 +47,7 @@ public class ResultList extends AppCompatActivity {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Packing.class));
+                startActivity(new Intent(getApplicationContext(), Packing.class));
             }
         });
 

@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +23,8 @@ import android.widget.ProgressBar;
 import android.util.Log;
 
 import com.example.a01.databinding.WebviewListBinding;
+import com.example.a01.uilayer.Itinerary;
+import com.example.a01.uilayer.NoItinerary;
 
 /*  -- Class Header Comment
  Name    :   Packing
@@ -110,17 +111,17 @@ public class WebViewList extends AppCompatActivity {
         Intent intent = null;
         switch(item.getItemId()) {
             case R.id.Toronto:
-                intent=new Intent(this,Itinerary.class);
+                intent=new Intent(this, Itinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Quebec:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Vancouver:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;

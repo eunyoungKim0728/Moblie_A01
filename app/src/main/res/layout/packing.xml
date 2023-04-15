@@ -19,7 +19,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context=".Packing">
+        tools:context=".uilayer.Packing">
 
         <TextView
             android:id="@+id/packingList"

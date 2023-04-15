@@ -10,17 +10,12 @@ package com.example.a01;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -32,15 +27,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
-import com.google.android.gms.maps.CameraUpdateFactory;
+
+import com.example.a01.services.MusicService;
+import com.example.a01.uilayer.AdminInfo;
+import com.example.a01.uilayer.Itinerary;
+import com.example.a01.uilayer.NoItinerary;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
     private GoogleMap mMap;
+    private Context myContext = null;
     private BootBroadcastReceiver bootReceiver;
 
 
@@ -73,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Intent musicService = new Intent(this,MusicService.class);
-        Intent NoItineraryService = new Intent(this,NoItineraryService.class);
+        Intent musicService = new Intent(this, MusicService.class);
+        Intent NoItineraryService = new Intent(this, com.example.a01.services.NoItineraryService.class);
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -153,15 +149,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // button to see admin info
         Button adminBtn = binding.adminBtn;
         adminBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Admin Info OnClick");
-                if (savedInstanceState == null) {
-                    Fragment myFragment = new com.example.a01.MyFragment();
-                    getFragmentManager().beginTransaction().add(android.R.id.content, myFragment).commit();
-                }
+                startActivity(new Intent(getApplicationContext(), AdminInfo.class));
             }
         });
 
@@ -218,8 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                 } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
+                    // If permission is denied, disable the functionality
                     Log.d(TAG, "Permission denied");
                 }
                 return;
@@ -250,12 +242,12 @@ public class MainActivity extends AppCompatActivity {
                 result = true;
                 break;
             case R.id.Quebec:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;
             case R.id.Vancouver:
-                intent=new Intent(this,NoItinerary1.class);
+                intent=new Intent(this, NoItinerary.class);
                 startActivity(intent);
                 result = true;
                 break;

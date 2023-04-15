@@ -5,7 +5,7 @@
 //DESCRIPTION   : This file has an interface to show a message "there is no itinerary" and a button
 //                to go back to the main page
 
-package com.example.a01;
+package com.example.a01.uilayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -24,13 +24,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.example.a01.MainActivity;
+import com.example.a01.R;
 import com.example.a01.databinding.NoItineraryPageBinding;
 
 
-
-// NAME   : NoItinerary1
+// NAME   : NoItinerary
 // PURPOSE: this class has a databinding button that allows user to go back to the main page
-public class NoItinerary1 extends AppCompatActivity {
+public class NoItinerary extends AppCompatActivity {
 
     public static final String TAG= "Noltinerary1";
 
@@ -42,7 +43,7 @@ public class NoItinerary1 extends AppCompatActivity {
         NoItineraryPageBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.no_itinerary_page);
 
-        Intent NoItineraryService = new Intent(this,NoItineraryService.class);
+        Intent NoItineraryService = new Intent(this, com.example.a01.services.NoItineraryService.class);
 
         Button mainBtn = binding.mainButton;
         mainBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +52,7 @@ public class NoItinerary1 extends AppCompatActivity {
                 Log.d(TAG, "In OnClick Listener");
                 stopService(NoItineraryService);
                 setNotification();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
@@ -94,7 +95,7 @@ public class NoItinerary1 extends AppCompatActivity {
 
     protected void setNotification() {
         Log.d(TAG,"Notification created");
-        Intent notificationIntent = new Intent(this, NoItinerary1.class);
+        Intent notificationIntent = new Intent(this, NoItinerary.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         int pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;

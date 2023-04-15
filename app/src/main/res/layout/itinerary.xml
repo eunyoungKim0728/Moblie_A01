@@ -121,9 +121,15 @@
                 android:text="@string/add_traveller" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addToCalendar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/res2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-938dp"
+                android:layout_marginRight="214dp"
+                android:text="Add to Calendar" />
+
 
         </RelativeLayout>
 

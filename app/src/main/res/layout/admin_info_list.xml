@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:context=".MainActivity"
     >
 
 
-    <TextView android:id = "@+id/adminID"
-        android:layout_height = "wrap_content"
+    <TextView
         android:layout_width="wrap_content"
-        android:textStyle="normal"
+        android:layout_height="wrap_content"
+        android:id="@+id/adminName"
         android:textSize="20sp" />
-    <TextView android:id = "@+id/adminName"
-        android:layout_height = "wrap_content"
+    <TextView
         android:layout_width="wrap_content"
-        android:textStyle="normal"
-        android:textSize="20sp" />
-    <TextView android:id = "@+id/adminEmail"
-        android:layout_height = "wrap_content"
-        android:layout_width="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp" />
-    <TextView android:id = "@+id/adminNumber"
-        android:layout_height = "wrap_content"
-        android:layout_width="wrap_content"
-        android:textStyle="italic"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:id="@+id/adminInfo"
+        android:textSize="15sp" />
+    
 
 </LinearLayout>

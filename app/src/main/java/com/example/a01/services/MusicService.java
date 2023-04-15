@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.services;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,6 +12,9 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+
+import com.example.a01.uilayer.Itinerary;
+import com.example.a01.R;
 
 public class MusicService extends Service {
 
@@ -39,7 +42,7 @@ public class MusicService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG,"Service Started");
-        mediaPlayer = MediaPlayer.create(this,R.raw.sunflower);  //mp3시작 및 반복
+        mediaPlayer = MediaPlayer.create(this, R.raw.sunflower);  //mp3시작 및 반복
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
         setNotification();
