@@ -7,16 +7,20 @@
 
 package com.example.a01;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
-
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
-
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,7 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.util.Log;
-
+import android.widget.TextView;
 
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
@@ -35,13 +39,26 @@ import com.example.a01.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG= "MainActivity";
+    private static final String TAG= "MainActivity";
+    private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
+
+        // check permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSIONS_REQUEST);
+        }
+
 
         Intent musicService = new Intent(this,MusicService.class);
         Intent NoItineraryService = new Intent(this,NoItineraryService.class);
@@ -92,26 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
-        }
-
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
-        switch (requestCode) {
-            case 1: {
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-
-                    Log.d("Trip Planner", "permission denied");
-                }
-                return;
-            }
-        }
     }
 
 
@@ -138,6 +135,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ad.show();
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Log.d(TAG, "Permission denied");
+                }
+                return;
+            }
+        }
 
     }
 
