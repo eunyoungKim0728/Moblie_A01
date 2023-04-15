@@ -32,6 +32,11 @@ import android.util.Log;
 
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG= "MainActivity";
     public Cities[] cities;
-
+    private GoogleMap mMap;
 
     private String getJsonString() {
         String json = "";
@@ -86,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // cities.add(city);
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -113,6 +117,20 @@ public class MainActivity extends AppCompatActivity {
                 startService(musicService);
             }
         });
+
+        Button torontoMapBtn = binding.buttonTorontoMap;
+        torontoMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Map OnClick");
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent.putExtra("Lat", 43.6532);
+                intent.putExtra("Long", -79.3832);
+                intent.putExtra("Name", "Toronto");
+                startActivity(intent);
+            }
+        });
+
         Button quebecBtn = binding.buttonQuebec;
         quebecBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +140,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
             }
         });
+
+
+        Button quebecMapBtn = binding.buttonQuebecMap;
+        quebecMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Map OnClick");
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent.putExtra("Lat", 46.8131);
+                intent.putExtra("Long", -71.2075);
+                intent.putExtra("Name", "Quebec");
+                startActivity(intent);
+            }
+        });
+
+
         Button vancouverBtn = binding.buttonVancouver;
         vancouverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +166,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        Button vancouverMapBtn = binding.buttonVancouverMap;
+        vancouverMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Map OnClick");
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                intent.putExtra("Lat", 49.2827);
+                intent.putExtra("Long", -123.1207);
+                intent.putExtra("Name", "Vancouver");
+                startActivity(intent);
+            }
+        });
 
         Button adminBtn = binding.adminBtn;
         adminBtn.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     protected void setNotification() {

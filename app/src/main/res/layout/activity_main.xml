@@ -30,31 +30,76 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            android:id="@+id/button_toronto_map"
+            android:layout_width="51dp"
+            android:layout_height="44dp"
+
+            android:layout_gravity="center"
+            android:layout_marginEnd="140pt"
+            android:backgroundTint="#BFEAFF"
+            android:drawableBottom="@drawable/map_imagexml"
+            android:text="@string/title_activity_maps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_toronto" />
+
+
+        <Button
             android:id="@+id/button_quebec"
             android:layout_width="400dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#03A9F4"
             android:text="@string/city_quebec"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_toronto" />
+            app:layout_constraintTop_toBottomOf="@+id/button_toronto_map" />
+
+        <Button
+            android:id="@+id/button_quebec_map"
+            android:layout_width="51dp"
+            android:layout_height="44dp"
+
+            android:layout_gravity="center"
+            android:layout_marginEnd="140pt"
+            android:backgroundTint="#BFEAFF"
+            android:drawableBottom="@drawable/map_imagexml"
+            android:text="@string/title_activity_maps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_quebec" />
+
         <Button
             android:id="@+id/button_vancouver"
             android:layout_width="400dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#2196F3"
             android:text="@string/city_vancouver"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_quebec" />
+            app:layout_constraintTop_toBottomOf="@+id/button_quebec_map" />
+
+        <Button
+            android:id="@+id/button_vancouver_map"
+            android:layout_width="51dp"
+            android:layout_height="44dp"
+
+            android:layout_gravity="center"
+            android:layout_marginEnd="140pt"
+            android:backgroundTint="#BFEAFF"
+            android:drawableBottom="@drawable/map_imagexml"
+            android:text="@string/title_activity_maps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_vancouver" />
+
 
         <Button
             android:id="@+id/adminBtn"
@@ -69,7 +114,11 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_vancouver" />
+            app:layout_constraintTop_toBottomOf="@+id/button_vancouver_map" />
+
+
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

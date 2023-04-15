@@ -22,5 +22,6 @@
 
     <string name="Noti_channel_name">Trip Planner channel</string>
     <string name="Noti_channel_dis">This is Trip Planner channel description</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
 
