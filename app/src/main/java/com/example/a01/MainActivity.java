@@ -7,20 +7,23 @@
 
 package com.example.a01;
 
-
-import static android.app.PendingIntent.getActivity;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,7 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.util.Log;
-
+import android.widget.TextView;
 
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
@@ -38,70 +41,36 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG= "MainActivity";
+    private static final String TAG= "MainActivity";
+    private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
     private GoogleMap mMap;
 
-    private String getJsonString() {
-        String json = "";
 
-        try {
-            InputStream is = getAssets().open("db.json");
-            int fileSize = is.available();
 
-            byte[] buffer = new byte[fileSize];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, "UTF-8");
-        }
-        catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
-
-        return json;
-    }
-
-    private void jsonParsing(String json) {
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-
-            JSONArray cityArray = jsonObject.getJSONArray("City");
-
-            for (int i = 0; i < cityArray.length(); i++)
-            {
-                JSONObject cityObject = cityArray.getJSONObject(i);
-
-                Cities city = new Cities();
-
-                city.setCityId(cityObject.getInt("cityID"));
-                city.setCityName(cityObject.getString("cityName"));
-                //city.setPrice(cityObject.getString("price"));
-
-                // cities.add(city);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
 
+        // check permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSIONS_REQUEST);
+        }
+
+
         Intent musicService = new Intent(this,MusicService.class);
+        Intent NoItineraryService = new Intent(this,NoItineraryService.class);
 
         ActivityMainBinding binding
                 = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -136,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Quebec OnClick");
-                setNotification();
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+                startService(NoItineraryService);
+
             }
         });
 
@@ -161,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Vancouver OnClick");
-                setNotification();
-                startActivity(new Intent(getApplicationContext(), NoItinerary1.class));
+                startService(NoItineraryService);
+
             }
         });
 
@@ -192,49 +161,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
+        ad.setIcon(R.mipmap.ic_launcher);
+        ad.setTitle("Trip Planner");
+        ad.setMessage("Do you want to quit Trip Planner?");
+
+        ad.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MainActivity.super.onBackPressed();
+            }
+        });
+
+        ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        ad.show();
 
     }
 
-    protected void setNotification() {
-        Log.d(TAG,"Notification created");
-        Intent notificationIntent = new Intent(this, NoItinerary1.class);
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-        int pendingFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent,pendingFlag);
-
-        int icon = R.drawable.ic_launcher_background;
-
-        CharSequence tickerText = "MyTickerText";
-        CharSequence contentTitle = "Trip Planner";
-        CharSequence contentText = "Did you participate our survey?\nWe need your help!";
-        NotificationCompat.Builder myBuilder = new NotificationCompat.Builder(this, "My Channel")
-                .setSmallIcon(icon)
-                //.setTicker(t)
-                .setContentTitle(contentTitle)
-                .setContentText(contentText)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-
-
-        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-            CharSequence name = getString(R.string.Noti_channel_name);
-            String description = getString(R.string.Noti_channel_dis);
-            NotificationChannel channel = new NotificationChannel("My Channel", name, NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription(description);
-            // Register the channel with the system
-            manager.createNotificationChannel(channel);
-            if (manager.areNotificationsEnabled()) {
-                manager.notify(1,myBuilder.build());
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Log.d(TAG, "Permission denied");
+                }
+                return;
             }
         }
 
     }
-
-
-
 
     @SuppressLint("RestrictedApi")
     @Override
