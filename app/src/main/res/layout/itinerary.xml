@@ -120,10 +120,7 @@
                 android:layout_marginRight="33dp"
                 android:text="@string/add_traveller" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
 
         </RelativeLayout>
 

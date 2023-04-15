@@ -82,12 +82,12 @@ public class ResultAdminList extends AsyncTask<Void, Void, MyResult> {
         Log.i(TAG,"onPostExecute");
 
         if (result != null) {
-            String[] from = new String[]{"id", "name","email", "number"};
-            int[] to = new int[]{R.id.adminID, R.id.adminName, R.id.adminEmail, R.id.adminNumber};
+            //String[] from = new String[]{"id", "name","email", "number"};
+            //int[] to = new int[]{R.id.adminID, R.id.adminName, R.id.adminEmail, R.id.adminNumber};
 
-            SimpleAdapter myAdapter = new SimpleAdapter(myContext, result.getData(), R.layout.admin_info_list, from, to);
-            ListView myList = binding.adminListView;
-            myList.setAdapter(myAdapter);
+            //SimpleAdapter myAdapter = new SimpleAdapter(myContext, result.getData(), R.layout.admin_info_list, from, to);
+            //ListView myList = binding.adminListView;
+            //myList.setAdapter(myAdapter);
         } else {
             Log.e("ResultAdminList", "Result is null");
         }

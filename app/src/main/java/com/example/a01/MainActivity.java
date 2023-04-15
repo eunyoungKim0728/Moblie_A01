@@ -21,9 +21,12 @@ import android.app.Fragment;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,10 +34,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.util.Log;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.a01.database.Cities;
 import com.example.a01.databinding.ActivityMainBinding;
+import com.example.a01.databinding.AdminInfoBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -48,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST = 1;
     public Cities[] cities;
     private GoogleMap mMap;
-
-
+    private Context myContext = null;
 
 
     @Override
@@ -154,10 +159,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Admin Info OnClick");
-                if (savedInstanceState == null) {
-                    Fragment myFragment = new com.example.a01.MyFragment();
-                    getFragmentManager().beginTransaction().add(android.R.id.content, myFragment).commit();
-                }
+                Uri adminUri = Uri.parse("content://" + MyContentProvider.PATH + "/admin");
+                Cursor cursor = getContentResolver().query(adminUri,null,null,null,null);
+                String[] columns = {AdminListDB.ADMIN_NAME, AdminListDB.ADMIN_INFO};
+                int[] to = {R.id.adminName, R.id.adminInfo};
+                SimpleCursorAdapter myAdapter = new SimpleCursorAdapter(
+                        getApplicationContext(), R.layout.admin_info_list,
+                        cursor,
+                        columns, to, 0
+                );
+                // need to modify it!!!!
+                //ListView myList = binding.adminListView;
+                //myList.setAdapter(myAdapter);
+
             }
         });
 
