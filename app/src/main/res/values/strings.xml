@@ -19,5 +19,8 @@
     <string name="noiter2">We would appreciate if you submit your preferred price.</string>
     <string name="noBtn">No,I don\'t want to submit </string>
     <string name="Info_admin">Admin Info</string>
+
+    <string name="Noti_channel_name">Trip Planner channel</string>
+    <string name="Noti_channel_dis">This is Trip Planner channel description</string>
 </resources>
 
