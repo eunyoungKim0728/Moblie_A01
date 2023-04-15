@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.database;
 
 public class AdminList {
 

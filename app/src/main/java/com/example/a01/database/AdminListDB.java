@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdminListDB {
 

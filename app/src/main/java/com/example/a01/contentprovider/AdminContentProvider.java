@@ -1,4 +1,4 @@
-package com.example.a01;
+package com.example.a01.contentprovider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -6,7 +6,10 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 
-public class MyContentProvider extends ContentProvider {
+import com.example.a01.database.Admin;
+import com.example.a01.database.AdminListDB;
+
+public class AdminContentProvider extends ContentProvider {
 
     public static final String PATH = "com.example.a01";
 
@@ -18,7 +21,7 @@ public class MyContentProvider extends ContentProvider {
     private UriMatcher uriMatcher = null;
 
 
-    public MyContentProvider() {
+    public AdminContentProvider() {
     }
 
     @Override

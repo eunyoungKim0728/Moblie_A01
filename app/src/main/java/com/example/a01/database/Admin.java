@@ -1,5 +1,4 @@
-package com.example.a01;
-
+package com.example.a01.database;
 
 import android.content.ContentValues;
 
