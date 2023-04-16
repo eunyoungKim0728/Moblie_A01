@@ -1,3 +1,10 @@
+/*
+ * FILE            :MapsActivity.java
+ * PROGRAMMER      :Eunyoung Kim, Yujin Jeong, Hyewon Lee, Maísa Wolff Resplande
+ * FIRST VERSION   :2023-04-11
+ * DESCRIPTION      : Programs that show Maps and can zoom in and out
+ */
+
 package com.example.a01;
 
 import androidx.fragment.app.FragmentActivity;
@@ -13,12 +20,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.a01.databinding.ActivityMapsBinding;
 
+
+/*  -- Class Header Comment
+ Name    :   MapsActivity
+ Purpose :  Class to run the FragmentActivity
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private static final String TAG= "MapsActivity";
 
+
+    /*  -- Method Header Comment
+   Name     :   onCreate
+   Purpose  :   Function that runs when clicked
+   Inputs   :   savedInstanceState   Bundle
+   Outputs  :   NONE
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +53,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    /*  -- Method Header Comment
+   Name     :   onMapReady
+   Purpose  :   Function that runs when googleMap clicked
+   Inputs   :   savedInstanceState   Bundle
+   Outputs  :   NONE
+    */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Log.d(TAG, "Open the Map");

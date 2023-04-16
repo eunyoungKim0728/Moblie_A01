@@ -1,5 +1,5 @@
 //FILE          : MainActivity.java
-//PROJECT       : PROG3150 - assignment 2
+//PROJECT       : PROG3150 - assignment 3
 //PROGRAMMER    : Yujin Jeong, Eunyoung Kim. Hyewon Lee, Maísa Wolff Resplande
 //FIRST VERSION : 2023.03.18
 //DESCRIPTION   : This main file check the button and start new activity
@@ -38,7 +38,10 @@ import com.example.a01.uilayer.Itinerary;
 import com.example.a01.uilayer.NoItinerary;
 import com.google.android.gms.maps.GoogleMap;
 
-
+/*  -- Class Header Comment
+ Name    :   MainActivity
+ Purpose :  Class to run the AppCompatActivity
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG= "MainActivity";
@@ -49,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
     private ChargerReceiver chargeReceiver;
 
 
-
-
+    /*  -- Method Header Comment
+   Name     :   onCreate
+   Purpose  :   Function that runs when clicked
+   Inputs   :   savedInstanceState   Bundle
+   Outputs  :   NONE
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +168,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*  -- Method Header Comment
+   Name     :   onResume
+   Purpose  :   Function that runs when resumed
+   Inputs   :   NONE
+   Outputs  :   NONE
+    */
     @Override
     protected void onResume(){
         super.onResume();
@@ -170,6 +183,12 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(chargeReceiver, filter);
     }
 
+    /*  -- Method Header Comment
+   Name     :   onPause
+   Purpose  :   Function that runs when paused
+   Inputs   :   NONE
+   Outputs  :   NONE
+    */
     @Override
     protected void onPause()
     {
@@ -178,6 +197,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    /*  -- Method Header Comment
+   Name     :   onBackPressed
+   Purpose  :   Function that runs when pressed
+   Inputs   :   NONE
+   Outputs  :   NONE
+    */
     @Override
     public void onBackPressed() {
         AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
@@ -204,6 +230,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /*  -- Method Header Comment
+   Name     :   onRequestPermissionsResult
+   Purpose  :   Function that runs when request permission
+   Inputs   :   int         requestCode
+                String[]    permissions
+                int[]       grantResults
+   Outputs  :   NONE
+    */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -221,6 +256,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /*  -- Method Header Comment
+   Name     :   onCreateOptionsMenu
+   Purpose  :   Function that runs when clicked
+   Inputs   :   Menu        menu
+   Outputs  :   NONE
+    */
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -231,6 +273,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /*  -- Method Header Comment
+  Name      :   onOptionsItemSelected
+  Purpose   :   Method for displaying a list
+  Inputs    :   item   MenuItem
+  Outputs   :   NONE
+   */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "In ItemSelected");

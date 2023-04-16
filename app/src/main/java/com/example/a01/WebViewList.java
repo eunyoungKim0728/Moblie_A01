@@ -45,6 +45,7 @@ public class WebViewList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "In OnCreate");
 
+        // Data binding for WebviewList
         WebviewListBinding binding = DataBindingUtil.setContentView(this,R.layout.webview_list);
 
         WebView webView = binding.webView;
