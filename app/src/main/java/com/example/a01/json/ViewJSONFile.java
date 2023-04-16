@@ -23,6 +23,7 @@ public class ViewJSONFile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_jsonfile);
+        Log.d(TAG, "OnCreate");
 
         ViewJsonfileBinding binding = DataBindingUtil.setContentView(this, R.layout.view_jsonfile);
 

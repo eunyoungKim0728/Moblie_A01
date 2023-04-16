@@ -9,21 +9,23 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+/**
+ * Created by Igor Pustylnick on 3/15/2016.
+ */
 public class AdminListDB {
 
     private static final String TAG= "AdminListDB";
-
     // database constants
     public static final String DB_NAME = "adminlist.db";
     public static final int    DB_VERSION = 1;
 
-    // list table constants
-    public static final String INFO_TABLE = "list";
+    // Info table constants
+    public static final String INFO_TABLE = "info";
 
     public static final String INFO_ID = "_id";
     public static final int    INFO_ID_COL = 0;
 
-    public static final String INFO_NAME = "info_name";
+    public static final String INFO_NAME = "list_name";
     public static final int    INFO_NAME_COL = 1;
 
     // task table constants
@@ -32,7 +34,7 @@ public class AdminListDB {
     public static final String ADMIN_ID = "_id";
     public static final int    ADMIN_ID_COL = 0;
 
-    public static final String ADMIN_INFO_ID = "admin_id";
+    public static final String ADMIN_INFO_ID = "info_id";
     public static final int    ADMIN_INFO_ID_COL = 1;
 
     public static final String ADMIN_NAME = "admin_name";
@@ -62,7 +64,7 @@ public class AdminListDB {
     public static final String DROP_INFO_TABLE =
             "DROP TABLE IF EXISTS " + INFO_TABLE;
 
-    public static final String DROP_ADMIN_TABLE =
+    public static final String DROP_TASK_TABLE =
             "DROP TABLE IF EXISTS " + ADMIN_TABLE;
 
     private static class DBHelper extends SQLiteOpenHelper {
@@ -74,33 +76,37 @@ public class AdminListDB {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            // create tables
+            Log.d(TAG, "OnCreate");
             db.execSQL(CREATE_INFO_TABLE);
             db.execSQL(CREATE_ADMIN_TABLE);
 
             // insert default lists
-            db.execSQL("INSERT INTO list VALUES (1, 'Ella Kim')");
-            db.execSQL("INSERT INTO list VALUES (2, 'CEO')");
+            db.execSQL("INSERT INTO info VALUES (1, 'Ella Kim')");
+            db.execSQL("INSERT INTO info VALUES (2, 'Yujin Jeong')");
+            db.execSQL("INSERT INTO info VALUES (3, 'Maisa Wolff Resplande')");
+            db.execSQL("INSERT INTO info VALUES (4, 'Hyewon Lee')");
 
             // insert sample tasks
-            db.execSQL("INSERT INTO admin VALUES ( 1, 'Eunyoung Kim', " +
-                    "'Number: (+1)123-456-7890\nEmail: ekim2911@conestogac.on.ca\n', 0, 0)");
-            db.execSQL("INSERT INTO admin VALUES (2, 'Yujin Jeong', " +
-                    "'Number: (+1)987-654-3210\nEmail: ...@conestogac.on.ca\n', 0, 0)");
-            db.execSQL("INSERT INTO admin VALUES (3, 'Maisa Wolff Resplande\n', " +
-                    "'Number: (+1)456-123-0789\nEmail: ...@conestogac.on.ca\n', 0, 0)");
-            db.execSQL("INSERT INTO admin VALUES (4, 'Hyewon Lee', " +
-                    "'Number: (+1)951-753-0258\nEmail: ...@conestogac.on.ca\n', 0, 0)");
+            db.execSQL("INSERT INTO admin VALUES ( 1, 1, 'Eunyoung Kim', " +
+                    "'Number: (+1)123-456-7890\nEmail: ekim2911@conestogac.on.ca\n', 0)");
+            db.execSQL("INSERT INTO admin VALUES (2, 2, 'Yujin Jeong', " +
+                    "'Number: (+1)987-654-3210\nEmail: ...@conestogac.on.ca\n', 0)");
+            db.execSQL("INSERT INTO admin VALUES (3, 3,'Maisa Wolff Resplande\n', " +
+                    "'Number: (+1)456-123-0789\nEmail: ...@conestogac.on.ca\n', 0)");
+            db.execSQL("INSERT INTO admin VALUES (4, 4, 'Hyewon Lee', " +
+                    "'Number: (+1)951-753-0258\nEmail: ...@conestogac.on.ca\n', 0)");
+
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db,
                               int oldVersion, int newVersion) {
-
-            Log.d(TAG,"Admin list");
+            Log.d(TAG, "OnUpgrade");
+            Log.d("Task info", "Upgrading db from version "
+                    + oldVersion + " to " + newVersion);
 
             db.execSQL(AdminListDB.DROP_INFO_TABLE);
-            db.execSQL(AdminListDB.DROP_ADMIN_TABLE);
+            db.execSQL(AdminListDB.DROP_TASK_TABLE);
             onCreate(db);
         }
     }
@@ -111,6 +117,7 @@ public class AdminListDB {
 
     // constructor
     public AdminListDB(Context context) {
+        Log.d(TAG, "AdminListDB");
         dbHelper = new DBHelper(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -124,17 +131,20 @@ public class AdminListDB {
     }
 
     private void closeDB() {
+        Log.d(TAG, "CloseDB");
         if (db != null)
             db.close();
     }
 
     private void closeCursor(Cursor cursor) {
+        Log.d(TAG, "CloseCursor");
         if (cursor != null)
             cursor.close();
     }
 
     // public methods
     public ArrayList<AdminList> getLists() {
+        Log.d(TAG,"Array/GetList");
         ArrayList<AdminList> lists = new ArrayList<AdminList>();
         openReadableDB();
         Cursor cursor = db.query(INFO_TABLE,
@@ -153,6 +163,8 @@ public class AdminListDB {
     }
 
     public AdminList getList(String name) {
+
+        Log.d(TAG, "AdminList/GetList");
         String where = INFO_NAME + "= ?";
         String[] whereArgs = { name };
 
@@ -169,30 +181,8 @@ public class AdminListDB {
         return list;
     }
 
-    public Cursor getTaskCursor(String infoName) {
-        String where =
-                ADMIN_INFO_ID + "= ? AND " +
-                        ADMIN_HIDDEN + "!=1";
-        int listID = getList(infoName).getId();
-        String[] whereArgs = { Integer.toString(listID) };
-
-        this.openReadableDB();
-        Cursor cursor = db.query(ADMIN_TABLE, null,
-                where, whereArgs,
-                null, null, null);
-        return cursor;
-    }
-
-    public Cursor queryTasks(String[] columns, String where,
-                             String[] whereArgs, String orderBy) {
-        this.openReadableDB();
-        Cursor cursor = db.query(ADMIN_TABLE, columns,
-                where, whereArgs,
-                null, null, orderBy);
-        return cursor;
-    }
-
-    public ArrayList<Admin> getTasks(String listName) {
+    public Cursor getAdminCursor(String listName) {
+        Log.d(TAG, "GetAdminCursor");
         String where =
                 ADMIN_INFO_ID + "= ? AND " +
                         ADMIN_HIDDEN + "!=1";
@@ -203,17 +193,43 @@ public class AdminListDB {
         Cursor cursor = db.query(ADMIN_TABLE, null,
                 where, whereArgs,
                 null, null, null);
-        ArrayList<Admin> tasks = new ArrayList<Admin>();
+        return cursor;
+    }
+
+    public Cursor queryAdmins(String[] columns, String where,
+                             String[] whereArgs, String orderBy) {
+        Log.d(TAG, "QueryAdmin");
+        this.openReadableDB();
+        Cursor cursor = db.query(ADMIN_TABLE, columns,
+                where, whereArgs,
+                null, null, orderBy);
+        return cursor;
+    }
+
+    public ArrayList<Admin> getAdmin(String listName) {
+        Log.d(TAG, "Array/GetAdmin");
+        String where =
+                ADMIN_INFO_ID + "= ? AND " +
+                        ADMIN_HIDDEN + "!=1";
+        int listID = getList(listName).getId();
+        String[] whereArgs = { Integer.toString(listID) };
+
+        this.openReadableDB();
+        Cursor cursor = db.query(ADMIN_TABLE, null,
+                where, whereArgs,
+                null, null, null);
+        ArrayList<Admin> admin = new ArrayList<Admin>();
         while (cursor.moveToNext()) {
-            tasks.add(getTaskFromCursor(cursor));
+            admin.add(getAdminFromCursor(cursor));
         }
         this.closeCursor(cursor);
         this.closeDB();
 
-        return tasks;
+        return admin;
     }
 
-    public Admin getTask(int id) {
+    public Admin getAdmin(int id) {
+        Log.d(TAG, "Admin/GetAdmin");
         String where = ADMIN_ID + "= ?";
         String[] whereArgs = { Integer.toString(id) };
 
@@ -221,26 +237,27 @@ public class AdminListDB {
         Cursor cursor = db.query(ADMIN_TABLE,
                 null, where, whereArgs, null, null, null);
         cursor.moveToFirst();
-        Admin task = getTaskFromCursor(cursor);
+        Admin admin = getAdminFromCursor(cursor);
         this.closeCursor(cursor);
         this.closeDB();
 
-        return task;
+        return admin;
     }
 
-    private static Admin getTaskFromCursor(Cursor cursor) {
+    private static Admin getAdminFromCursor(Cursor cursor) {
+        Log.d(TAG, "GetAdminFromCursor");
         if (cursor == null || cursor.getCount() == 0){
             return null;
         }
         else {
             try {
-                Admin task = new Admin(
+                Admin admin = new Admin(
                         cursor.getInt(ADMIN_ID_COL),
                         cursor.getInt(ADMIN_INFO_ID_COL),
                         cursor.getString(ADMIN_NAME_COL),
                         cursor.getString(ADMIN_INFO_COL),
                         cursor.getInt(ADMIN_HIDDEN_COL));
-                return task;
+                return admin;
             }
             catch(Exception e) {
                 return null;
@@ -248,12 +265,13 @@ public class AdminListDB {
         }
     }
 
-    public long insertTask(Admin task) {
+    public long insertAdmin(Admin admin) {
+        Log.d(TAG, "InsertAdmin");
         ContentValues cv = new ContentValues();
-        cv.put(ADMIN_INFO_ID, task.getId());
-        cv.put(ADMIN_NAME, task.getName());
-        cv.put(ADMIN_INFO, task.getInfo());
-        cv.put(ADMIN_HIDDEN, task.getHidden());
+        cv.put(ADMIN_INFO_ID, admin.getInfoId());
+        cv.put(ADMIN_NAME, admin.getName());
+        cv.put(ADMIN_INFO, admin.getInfo());
+        cv.put(ADMIN_HIDDEN, admin.getHidden());
 
         this.openWriteableDB();
         long rowID = db.insert(ADMIN_TABLE, null, cv);
@@ -262,15 +280,16 @@ public class AdminListDB {
         return rowID;
     }
 
-    public int updateTask(Admin task) {
+    public int updateAdmin(Admin admin) {
+        Log.d(TAG, "UpdateAdmin");
         ContentValues cv = new ContentValues();
-        cv.put(ADMIN_INFO_ID, task.getId());
-        cv.put(ADMIN_NAME, task.getName());
-        cv.put(ADMIN_INFO, task.getInfo());
-        cv.put(ADMIN_HIDDEN, task.getHidden());
+        cv.put(ADMIN_INFO_ID, admin.getInfoId());
+        cv.put(ADMIN_NAME, admin.getName());
+        cv.put(ADMIN_INFO, admin.getInfo());
+        cv.put(ADMIN_HIDDEN, admin.getHidden());
 
         String where = ADMIN_ID + "= ?";
-        String[] whereArgs = { String.valueOf(task.getId()) };
+        String[] whereArgs = { String.valueOf(admin.getId()) };
 
         this.openWriteableDB();
         int rowCount = db.update(ADMIN_TABLE, cv, where, whereArgs);
@@ -279,7 +298,8 @@ public class AdminListDB {
         return rowCount;
     }
 
-    public int updateTask(ContentValues cv, String where, String[] whereArgs) {
+    public int updateAdmin(ContentValues cv, String where, String[] whereArgs) {
+        Log.d(TAG, "UpdateAdmin /cv,where,whereArgs");
         this.openWriteableDB();
         int rowCount = db.update(ADMIN_TABLE, cv, where, whereArgs);
         this.closeDB();
@@ -287,7 +307,8 @@ public class AdminListDB {
         return rowCount;
     }
 
-    public int deleteTask(String where, String[] whereArgs) {
+    public int deleteAdmin(String where, String[] whereArgs) {
+        Log.d(TAG, "DeleteAdmin/ where, whereArgs");
         this.openWriteableDB();
         int rowCount = db.delete(ADMIN_TABLE, where, whereArgs);
         this.closeDB();
@@ -295,7 +316,8 @@ public class AdminListDB {
         return rowCount;
     }
 
-    public int deleteTask(long id) {
+    public int deleteAdmin(long id) {
+        Log.d(TAG, "DeleteAdmin");
         String where = ADMIN_ID + "= ?";
         String[] whereArgs = { String.valueOf(id) };
 
@@ -305,5 +327,4 @@ public class AdminListDB {
 
         return rowCount;
     }
-
 }

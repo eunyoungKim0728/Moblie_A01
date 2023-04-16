@@ -19,6 +19,7 @@ public class AdminContentProvider extends ContentProvider {
 
     private AdminListDB db = null;
     private UriMatcher uriMatcher = null;
+    private static final String TAG= "AdminContentProvider";
 
 
     public AdminContentProvider() {
@@ -30,11 +31,11 @@ public class AdminContentProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case SINGLE_URI:
                 String adminId = uri.getLastPathSegment();
-                deleteCount = db.deleteTask(Long.getLong(adminId));
+                deleteCount = db.deleteAdmin(Long.getLong(adminId));
                 getContext().getContentResolver().notifyChange(uri, null);
                 return deleteCount;
             case ALL_LIST_URI:
-                deleteCount = db.deleteTask(selection, selectionArgs);
+                deleteCount = db.deleteAdmin(selection, selectionArgs);
                 getContext().getContentResolver().notifyChange(uri, null);
                 return deleteCount;
             default:
@@ -60,7 +61,7 @@ public class AdminContentProvider extends ContentProvider {
     public Uri insert(Uri uri, ContentValues values) {
         switch (uriMatcher.match(uri)) {
             case ALL_LIST_URI:
-                long insertId = db.insertTask(new Admin(values));
+                long insertId = db.insertAdmin(new Admin(values));
                 getContext().getContentResolver().notifyChange(uri, null);
                 return uri.buildUpon().appendPath(
                         String.valueOf(insertId)).build();
@@ -83,7 +84,7 @@ public class AdminContentProvider extends ContentProvider {
                         String[] selectionArgs, String sortOrder) {
         switch (uriMatcher.match(uri)) {
             case ALL_LIST_URI:
-                return db.queryTasks(projection, selection,
+                return db.queryAdmins(projection, selection,
                         selectionArgs, sortOrder);
             default:
                 throw new UnsupportedOperationException("URI " + uri + " is not supported");
@@ -97,13 +98,13 @@ public class AdminContentProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case SINGLE_URI:
                 String adminId = uri.getLastPathSegment();
-                Admin task = new Admin(values);
-                task.setId(Integer.getInteger(adminId));
-                updateCount = db.updateTask(task);
+                Admin admin = new Admin(values);
+                admin.setId(Integer.getInteger(adminId));
+                updateCount = db.updateAdmin(admin);
                 getContext().getContentResolver().notifyChange(uri, null);
                 return updateCount;
             case ALL_LIST_URI:
-                updateCount = db.updateTask(values, selection, selectionArgs);
+                updateCount = db.updateAdmin(values, selection, selectionArgs);
                 getContext().getContentResolver().notifyChange(uri, null);
                 return updateCount;
             default:

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public Cities[] cities;
     private GoogleMap mMap;
     private Context myContext = null;
-    private BootBroadcastReceiver bootReceiver;
+    private ChargerReceiver chargeReceiver;
 
 
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "OnCreate");
 
-        bootReceiver = new BootBroadcastReceiver();
+        chargeReceiver = new ChargerReceiver();
 
         // check permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
@@ -166,14 +166,14 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
-        registerReceiver(bootReceiver, filter);
+        registerReceiver(chargeReceiver, filter);
     }
 
     @Override
     protected void onPause()
     {
         super.onPause();
-        unregisterReceiver(bootReceiver);
+        unregisterReceiver(chargeReceiver);
     }
 
 

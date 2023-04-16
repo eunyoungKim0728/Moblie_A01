@@ -1,6 +1,7 @@
 package com.example.a01.json;
 
 import android.os.Build;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,9 +19,11 @@ public class WebAdminConnect {
 
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int DATARETRIEVAL_TIMEOUT = 30000;
+    private static final String TAG= "WebAdminConnect";
 
     public static JSONObject requestWebAdminConnect(String serviceUrl) {
         disableConnectionReuseIfNecessary();
+        Log.d(TAG, "Request");
 
         HttpURLConnection urlConnection = null;
         try {
@@ -62,6 +65,7 @@ public class WebAdminConnect {
         return null;
     }
         private static void disableConnectionReuseIfNecessary() {
+            Log.d(TAG, "DisableConnection");
 
             if (Build.VERSION.SDK_INT <  Build.VERSION_CODES.FROYO) {
                 System.setProperty("http.keepAlive", "false");
@@ -69,6 +73,7 @@ public class WebAdminConnect {
         }
 
         private static String getResponseText(InputStream inStream) {
+            Log.d(TAG, "GetResponse");
 
             return new Scanner(inStream).useDelimiter("\\A").next();
         }
