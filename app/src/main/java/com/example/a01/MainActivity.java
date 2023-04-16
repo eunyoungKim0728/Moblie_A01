@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.databinding.DataBindingUtil;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -46,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private GoogleMap mMap;
     private Context myContext = null;
     private BootBroadcastReceiver bootReceiver;
-
-
 
 
     @Override
@@ -163,10 +162,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
+
+        // system broadcasting
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         registerReceiver(bootReceiver, filter);
+
+        // application broadcasting
+        Intent intent = new Intent();
+        intent.setAction("com.example.a01.NOTIFICATION");
+        intent.putExtra("data", "Trip planner is running!");
+        sendBroadcast(intent);
     }
 
     @Override
